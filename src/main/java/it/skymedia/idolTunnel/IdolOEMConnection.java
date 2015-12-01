@@ -46,7 +46,7 @@ import com.autonomy.aci.client.util.AciParameters;
  */
 @WebService(serviceName="IdolOEMConnection")
 @Stateless
-public class IdolOEMConnection {
+public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.IdolOEMConnection {
 	
 	/**
 	 * relative path to the config properties file
