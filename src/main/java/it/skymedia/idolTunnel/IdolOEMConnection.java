@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -46,6 +47,7 @@ import com.autonomy.aci.client.util.AciParameters;
  */
 @WebService(serviceName="IdolOEMConnection")
 @Stateless
+@Startup
 public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.IdolOEMConnection {
 	
 	/**

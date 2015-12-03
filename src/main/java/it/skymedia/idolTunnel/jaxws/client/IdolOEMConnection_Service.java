@@ -74,9 +74,9 @@ public class IdolOEMConnection_Service extends Service {
      *     returns IdolOEMConnection
      */
     @WebEndpoint(name = "IdolOEMConnectionPort")
-    public it.skymedia.idolTunnel.IdolOEMConnection getIdolOEMConnectionPort() {
-        //return super.getPort(IdolOEMConnectionPort, IdolOEMConnection.class);
-        return new it.skymedia.idolTunnel.IdolOEMConnection();
+    public IdolOEMConnection getIdolOEMConnectionPort() {
+        return super.getPort(IdolOEMConnectionPort, IdolOEMConnection.class);
+        //return new it.skymedia.idolTunnel.IdolOEMConnection();
     }
 
     /**
@@ -87,9 +87,9 @@ public class IdolOEMConnection_Service extends Service {
      *     returns IdolOEMConnection
      */
     @WebEndpoint(name = "IdolOEMConnectionPort")
-    public it.skymedia.idolTunnel.IdolOEMConnection getIdolOEMConnectionPort(WebServiceFeature... features) {
-        //return super.getPort(IdolOEMConnectionPort, IdolOEMConnection.class, features);
-        return new it.skymedia.idolTunnel.IdolOEMConnection();
+    public IdolOEMConnection getIdolOEMConnectionPort(WebServiceFeature... features) {
+        return super.getPort(IdolOEMConnectionPort, IdolOEMConnection.class, features);
+        //return new it.skymedia.idolTunnel.IdolOEMConnection();
     }
 
 }
