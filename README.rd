@@ -34,7 +34,7 @@ with all deopendencies included in the WEB-INF/lib/
 
 The project contains a SOAP Java WS web-service whose
 deployed WSDL has the following url format:
-- http://[localhost]:[8080]/idolTunnel/IdolOEMConnection/IdolOEMConnection?wsdl
+- http://[localhost]:[8080]/geagaci/acitunnel/IdolOEMConnection/IdolOEMConnection?wsdl
 
 Also, the project contains a JUnit test class for all the
 web-service public methods:
