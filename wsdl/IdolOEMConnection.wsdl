@@ -1,133 +1,312 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="IdolOEMConnection" targetNamespace="http://idolTunnel.skymedia.it/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://idolTunnel.skymedia.it/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://idolTunnel.skymedia.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IdolOEMConnection" targetNamespace="http://idolTunnel.skymedia.it/">
   <wsdl:types>
-<schema xmlns="http://www.w3.org/2001/XMLSchema">
-  <import namespace="http://idolTunnel.skymedia.it/" schemaLocation="IdolOEMConnection_schema1.xsd"></import>
-</schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://idolTunnel.skymedia.it/" elementFormDefault="unqualified" targetNamespace="http://idolTunnel.skymedia.it/" version="1.0">
+
+  <xs:element name="aciRequest" type="tns:aciRequest"></xs:element>
+
+  <xs:element name="aciRequestResponse" type="tns:aciRequestResponse"></xs:element>
+
+  <xs:element name="getQueryHitsMap" type="tns:getQueryHitsMap"></xs:element>
+
+  <xs:element name="getQueryHitsMapResponse" type="tns:getQueryHitsMapResponse"></xs:element>
+
+  <xs:element name="getQueryResponse" type="tns:getQueryResponse"></xs:element>
+
+  <xs:element name="getQueryResponseResponse" type="tns:getQueryResponseResponse"></xs:element>
+
+  <xs:element name="getlicenseinfo" type="tns:getlicenseinfo"></xs:element>
+
+  <xs:element name="getlicenseinfoResponse" type="tns:getlicenseinfoResponse"></xs:element>
+
+  <xs:element name="getstatus" type="tns:getstatus"></xs:element>
+
+  <xs:element name="getstatusResponse" type="tns:getstatusResponse"></xs:element>
+
+  <xs:element name="getversion" type="tns:getversion"></xs:element>
+
+  <xs:element name="getversionResponse" type="tns:getversionResponse"></xs:element>
+
+  <xs:element name="grl" type="tns:grl"></xs:element>
+
+  <xs:element name="grlResponse" type="tns:grlResponse"></xs:element>
+
+  <xs:complexType name="aciRequest">
+    <xs:sequence>
+      <xs:element name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aciRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="grl">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="grlResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryResponseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getstatus">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getstatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getversion">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getversionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryHitsMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryHitsMapResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hashMap"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hashMap">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractMap">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractMap">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getlicenseinfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getlicenseinfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
   </wsdl:types>
-  <wsdl:message name="grlResponse">
-    <wsdl:part name="parameters" element="tns:grlResponse">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getstatus">
-    <wsdl:part name="parameters" element="tns:getstatus">
+    <wsdl:part element="tns:getstatus" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getstatusResponse">
-    <wsdl:part name="parameters" element="tns:getstatusResponse">
+    <wsdl:part element="tns:getstatusResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getversion">
-    <wsdl:part name="parameters" element="tns:getversion">
+  <wsdl:message name="getQueryHitsMapResponse">
+    <wsdl:part element="tns:getQueryHitsMapResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="aciRequestResponse">
-    <wsdl:part name="parameters" element="tns:aciRequestResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getlicenseinfo">
-    <wsdl:part name="parameters" element="tns:getlicenseinfo">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getversionResponse">
-    <wsdl:part name="parameters" element="tns:getversionResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="aciRequest">
-    <wsdl:part name="parameters" element="tns:aciRequest">
+  <wsdl:message name="getQueryResponse">
+    <wsdl:part element="tns:getQueryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="grl">
-    <wsdl:part name="parameters" element="tns:grl">
+    <wsdl:part element="tns:grl" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getlicenseinfoResponse">
-    <wsdl:part name="parameters" element="tns:getlicenseinfoResponse">
+    <wsdl:part element="tns:getlicenseinfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grlResponse">
+    <wsdl:part element="tns:grlResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryHitsMap">
+    <wsdl:part element="tns:getQueryHitsMap" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryResponseResponse">
+    <wsdl:part element="tns:getQueryResponseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getversion">
+    <wsdl:part element="tns:getversion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="aciRequestResponse">
+    <wsdl:part element="tns:aciRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getlicenseinfo">
+    <wsdl:part element="tns:getlicenseinfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="aciRequest">
+    <wsdl:part element="tns:aciRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getversionResponse">
+    <wsdl:part element="tns:getversionResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="IdolOEMConnection">
     <wsdl:operation name="aciRequest">
-      <wsdl:input name="aciRequest" message="tns:aciRequest">
+      <wsdl:input message="tns:aciRequest" name="aciRequest">
     </wsdl:input>
-      <wsdl:output name="aciRequestResponse" message="tns:aciRequestResponse">
+      <wsdl:output message="tns:aciRequestResponse" name="aciRequestResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="grl">
-      <wsdl:input name="grl" message="tns:grl">
+      <wsdl:input message="tns:grl" name="grl">
     </wsdl:input>
-      <wsdl:output name="grlResponse" message="tns:grlResponse">
+      <wsdl:output message="tns:grlResponse" name="grlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryResponse">
+      <wsdl:input message="tns:getQueryResponse" name="getQueryResponse">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueryResponseResponse" name="getQueryResponseResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getstatus">
-      <wsdl:input name="getstatus" message="tns:getstatus">
+      <wsdl:input message="tns:getstatus" name="getstatus">
     </wsdl:input>
-      <wsdl:output name="getstatusResponse" message="tns:getstatusResponse">
+      <wsdl:output message="tns:getstatusResponse" name="getstatusResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getversion">
-      <wsdl:input name="getversion" message="tns:getversion">
+      <wsdl:input message="tns:getversion" name="getversion">
     </wsdl:input>
-      <wsdl:output name="getversionResponse" message="tns:getversionResponse">
+      <wsdl:output message="tns:getversionResponse" name="getversionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryHitsMap">
+      <wsdl:input message="tns:getQueryHitsMap" name="getQueryHitsMap">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueryHitsMapResponse" name="getQueryHitsMapResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getlicenseinfo">
-      <wsdl:input name="getlicenseinfo" message="tns:getlicenseinfo">
+      <wsdl:input message="tns:getlicenseinfo" name="getlicenseinfo">
     </wsdl:input>
-      <wsdl:output name="getlicenseinfoResponse" message="tns:getlicenseinfoResponse">
+      <wsdl:output message="tns:getlicenseinfoResponse" name="getlicenseinfoResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="IdolOEMConnectionSoapBinding" type="tns:IdolOEMConnection">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
     <wsdl:operation name="aciRequest">
-      <soap:operation soapAction="" style="document"/>
+      <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="aciRequest">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="aciRequestResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getstatus">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getstatus">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getstatusResponse">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="grl">
-      <soap:operation soapAction="" style="document"/>
+      <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="grl">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="grlResponse">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getlicenseinfo">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getlicenseinfo">
-        <soap:body use="literal"/>
+    <wsdl:operation name="getQueryResponse">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getQueryResponse">
+        <soap:body use="literal"></soap:body>
       </wsdl:input>
-      <wsdl:output name="getlicenseinfoResponse">
-        <soap:body use="literal"/>
+      <wsdl:output name="getQueryResponseResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getstatus">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getstatus">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getstatusResponse">
+        <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getversion">
-      <soap:operation soapAction="" style="document"/>
+      <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="getversion">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="getversionResponse">
-        <soap:body use="literal"/>
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryHitsMap">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getQueryHitsMap">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getQueryHitsMapResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getlicenseinfo">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getlicenseinfo">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getlicenseinfoResponse">
+        <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="IdolOEMConnection">
-    <wsdl:port name="IdolOEMConnectionPort" binding="tns:IdolOEMConnectionSoapBinding">
-      <soap:address location="http://localhost:9090/IdolOEMConnectionPort"/>
+    <wsdl:port binding="tns:IdolOEMConnectionSoapBinding" name="IdolOEMConnectionPort">
+      <soap:address location="http://localhost:8080/geagaci/acitunnel/IdolOEMConnection/IdolOEMConnection"></soap:address>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
