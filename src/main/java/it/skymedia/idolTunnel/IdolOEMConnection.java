@@ -1,9 +1,14 @@
 package it.skymedia.idolTunnel;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -12,6 +17,9 @@ import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -29,6 +37,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.autonomy.aci.client.services.AciConstants;
 import com.autonomy.aci.client.services.AciService;
@@ -271,13 +283,131 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 			String autnResponse = format.toLowerCase().equals("xml") ? 
 				xmlResponse(this.aciService.executeAction(parms, new DocumentProcessor()) ): // XML
 				jsonResponse(this.aciService.executeAction(parms, new ByteArrayProcessor()) ); // Json
-			return autnResponse;	
+			return new String(autnResponse);	
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "IdolOEMTunnel - aciRequest: unexpected Error Occurred - maybe Badly formatted ACI action params?";
 		}
 	}
 
+	
+//	/**
+//	 * input String-AUTNResponse  and return xml-Document
+//	 * @return a XML Document
+//	 * @throws XPathExpressionException
+//	 */
+//	@WebMethod(operationName="responseToDocument")
+//	public Document responseToXMLDocument(String response) {
+//		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance(); 
+//		DocumentBuilder builder;
+//		Document document = null;
+//		try {
+//			InputStream is = new ByteArrayInputStream(response.getBytes());
+//			builder = documentFactory.newDocumentBuilder();
+//			document = builder.parse(is);
+//		} catch (ParserConfigurationException e) {
+//			e.printStackTrace();
+//		} catch (SAXException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return document;
+//	}
+	
+	/**
+	 * Method catch response node from xml document
+	 * @return a XML Document
+	 * @throws XPathExpressionException
+	 */
+	@WebMethod(operationName="getQueryResponse")
+	public String getQueryResponse(String xml){
+		String result = "";
+		Document document = getDocumentFrom(xml);
+		
+		NodeList response = document.getElementsByTagName("response");
+		Node resp = response.item(0);
+		
+		result = resp.getFirstChild().getNodeValue();
+		return result ;
+	}
+	
+	/**
+	 * Method return List<Map> when every map contains hit fields 
+	 * @return ArrayList<HashMap<String, String>> list of map hit
+	 * 
+	 */
+	@WebMethod(operationName="getQueryHitsMap")
+	public ArrayList<HashMap<String, String>> getQueryHitsMap(String xml){
+		ArrayList<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
+		Document document = getDocumentFrom(xml);
+		
+		NodeList hits = document.getElementsByTagName("autn:hit");
+
+		for(int i=0; i<hits.getLength(); i++) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			Node nodo = hits.item(i);
+			NodeList hitChilds = nodo.getChildNodes();
+			
+			for(int j=0;j<hitChilds.getLength(); j++){
+				Node n = hitChilds.item(j);
+				if(n.getNodeType() == Node.ELEMENT_NODE) {
+					Element e2 = (Element) n;
+					if(!e2.getNodeName().equals("autn:content")){
+						String value = "";
+						if(map.containsKey(e2.getNodeName())){
+							value = map.get(e2.getNodeName()) + "," + e2.getTextContent();
+							map.put(e2.getNodeName(), value);
+						}
+						else{
+							map.put(e2.getNodeName(), e2.getTextContent());
+						}
+						
+					}
+					else{
+						NodeList content = e2.getElementsByTagName("DOCUMENT").item(0).getChildNodes();
+					
+						for(int z=0; z<content.getLength();z++){
+							Node d = content.item(z);
+							if(d.getNodeType() == Node.ELEMENT_NODE) {
+								Element el = (Element) d;
+								String value= "";
+								if(map.containsKey(el.getNodeName())){
+									value = map.get(el.getNodeName()) + "," + el.getTextContent();
+									map.put(el.getNodeName(), value);
+								}
+								else{
+									map.put(el.getNodeName(), el.getTextContent());
+								}
+							}
+						}
+					}
+				}
+			}
+			result.add(map);
+		}
+		return result;
+	}
+	
+	private Document getDocumentFrom(String xml){
+		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance(); 
+		DocumentBuilder builder = null;
+		Document document = null;
+		try {
+			InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
+			builder = documentFactory.newDocumentBuilder();
+			document = builder.parse(is);
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return document;
+	}
+	
+	
 	/**
 	 * checks if action parameter exists
 	 */
@@ -332,7 +462,7 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 		}
 		return result;
 	}
-	
+
 	/**
 	 * a main useful application for debug
 	 * @param args

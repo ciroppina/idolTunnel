@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import java.util.HashMap;
 
 /**
  * This object contains factory methods for each 
@@ -25,11 +26,15 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _GrlResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "grlResponse");
+    private final static QName _GetQueryHitsMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMap");
     private final static QName _Getstatus_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatus");
     private final static QName _GetstatusResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatusResponse");
+    private final static QName _GetQueryHitsMapResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMapResponse");
+    private final static QName _GetQueryResponseResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponseResponse");
     private final static QName _Getversion_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversion");
     private final static QName _AciRequestResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequestResponse");
     private final static QName _AciRequest_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequest");
+    private final static QName _GetQueryResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponse");
     private final static QName _Getlicenseinfo_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfo");
     private final static QName _GetversionResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversionResponse");
     private final static QName _Grl_QNAME = new QName("http://idolTunnel.skymedia.it/", "grl");
@@ -67,6 +72,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetQueryResponseResponse }
+     * 
+     */
+    public GetQueryResponseResponse createGetQueryResponseResponse() {
+        return new GetQueryResponseResponse();
+    }
+
+    /**
      * Create an instance of {@link AciRequestResponse }
      * 
      */
@@ -88,6 +101,14 @@ public class ObjectFactory {
      */
     public Getlicenseinfo createGetlicenseinfo() {
         return new Getlicenseinfo();
+    }
+
+    /**
+     * Create an instance of {@link GetQueryResponse }
+     * 
+     */
+    public GetQueryResponse createGetQueryResponse() {
+        return new GetQueryResponse();
     }
 
     /**
@@ -115,6 +136,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetQueryHitsMap }
+     * 
+     */
+    public GetQueryHitsMap createGetQueryHitsMap() {
+        return new GetQueryHitsMap();
+    }
+
+    /**
      * Create an instance of {@link Getstatus }
      * 
      */
@@ -128,6 +157,22 @@ public class ObjectFactory {
      */
     public GetstatusResponse createGetstatusResponse() {
         return new GetstatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetQueryHitsMapResponse }
+     * 
+     */
+    public GetQueryHitsMapResponse createGetQueryHitsMapResponse() {
+        return new GetQueryHitsMapResponse();
+    }
+
+    /**
+     * Create an instance of {@link HashMap }
+     * 
+     */
+    public HashMap<String, String> createHashMap() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -148,6 +193,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsMap }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsMap")
+    public JAXBElement<GetQueryHitsMap> createGetQueryHitsMap(GetQueryHitsMap value) {
+        return new JAXBElement<GetQueryHitsMap>(_GetQueryHitsMap_QNAME, GetQueryHitsMap.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Getstatus }{@code >}}
      * 
      */
@@ -163,6 +217,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getstatusResponse")
     public JAXBElement<GetstatusResponse> createGetstatusResponse(GetstatusResponse value) {
         return new JAXBElement<GetstatusResponse>(_GetstatusResponse_QNAME, GetstatusResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsMapResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsMapResponse")
+    public JAXBElement<GetQueryHitsMapResponse> createGetQueryHitsMapResponse(GetQueryHitsMapResponse value) {
+        return new JAXBElement<GetQueryHitsMapResponse>(_GetQueryHitsMapResponse_QNAME, GetQueryHitsMapResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryResponseResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryResponseResponse")
+    public JAXBElement<GetQueryResponseResponse> createGetQueryResponseResponse(GetQueryResponseResponse value) {
+        return new JAXBElement<GetQueryResponseResponse>(_GetQueryResponseResponse_QNAME, GetQueryResponseResponse.class, null, value);
     }
 
     /**
@@ -190,6 +262,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequest")
     public JAXBElement<AciRequest> createAciRequest(AciRequest value) {
         return new JAXBElement<AciRequest>(_AciRequest_QNAME, AciRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryResponse")
+    public JAXBElement<GetQueryResponse> createGetQueryResponse(GetQueryResponse value) {
+        return new JAXBElement<GetQueryResponse>(_GetQueryResponse_QNAME, GetQueryResponse.class, null, value);
     }
 
     /**
