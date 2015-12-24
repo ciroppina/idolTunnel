@@ -1,6 +1,9 @@
 package it.skymedia.idolTunnel.test.clientsample;
 
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import it.skymedia.idolTunnel.jaxws.client.*;
@@ -50,6 +53,36 @@ public class ClientSample {
 	        System.out.println("Server said: " + port2.getversion());
 	        System.out.println("Server said: " + port2.getlicenseinfo("xml"));
 	        //Please input the parameters instead of 'null' for the upper method!
+	        
+	        //new Objects-based method call
+	        pList = new HashMap<String, String>();
+			pList.put("action", "query");
+			pList.put("text", "*");
+			pList.put("anylanguage", "true");
+			pList.put("maxresults", "25");
+			pList.put("databasematch", "");
+			pList.put("combine", "simple");
+			pList.put("outputencoding", "utf8");
+			pList.put("totalResults", "true");
+			
+			IdolOEMConnection ic = service1.getIdolOEMConnectionPort();
+			String autnresponse = ic.aciRequest(pList, "xml");
+			System.out.println("Server said: " + ic.getQueryResponse(autnresponse) );
+			
+			//new Objects-based method call
+			pList = new HashMap<String, String>();
+			pList.put("action", "query");
+			pList.put("text", "*");
+			pList.put("anylanguage", "true");
+			pList.put("maxresults", "25");
+			pList.put("databasematch", "");
+			pList.put("combine", "simple");
+			pList.put("outputencoding", "utf8");
+			pList.put("totalResults", "true");
+			
+			autnresponse = ic.aciRequest(pList, "xml");
+			List<HashMap<String, String>> listHits = ic.getQueryHitsMap(autnresponse);
+			System.out.println("Server said: size should be 25: " + listHits.size() );
 	
 	        System.out.println("***********************");
 	        System.out.println("Call Over!");
