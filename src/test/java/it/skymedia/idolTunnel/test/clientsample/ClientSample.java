@@ -1,12 +1,11 @@
 package it.skymedia.idolTunnel.test.clientsample;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import it.skymedia.idolTunnel.jaxws.client.IdolOEMConnection;
+import it.skymedia.idolTunnel.jaxws.client.IdolOEMConnection_Service;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import it.skymedia.idolTunnel.jaxws.client.*;
 
 public class ClientSample {
 
