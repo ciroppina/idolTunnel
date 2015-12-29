@@ -6,13 +6,25 @@
 
   <xs:element name="aciRequestResponse" type="tns:aciRequestResponse"></xs:element>
 
+  <xs:element name="getHitIndexedContent" type="tns:getHitIndexedContent"></xs:element>
+
+  <xs:element name="getHitIndexedContentResponse" type="tns:getHitIndexedContentResponse"></xs:element>
+
   <xs:element name="getQueryHitsMap" type="tns:getQueryHitsMap"></xs:element>
 
   <xs:element name="getQueryHitsMapResponse" type="tns:getQueryHitsMapResponse"></xs:element>
 
+  <xs:element name="getQueryHitsNoDocumentMap" type="tns:getQueryHitsNoDocumentMap"></xs:element>
+
+  <xs:element name="getQueryHitsNoDocumentMapResponse" type="tns:getQueryHitsNoDocumentMapResponse"></xs:element>
+
   <xs:element name="getQueryResponse" type="tns:getQueryResponse"></xs:element>
 
   <xs:element name="getQueryResponseResponse" type="tns:getQueryResponseResponse"></xs:element>
+
+  <xs:element name="getSpellCheckFields" type="tns:getSpellCheckFields"></xs:element>
+
+  <xs:element name="getSpellCheckFieldsResponse" type="tns:getSpellCheckFieldsResponse"></xs:element>
 
   <xs:element name="getlicenseinfo" type="tns:getlicenseinfo"></xs:element>
 
@@ -68,6 +80,31 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getHitIndexedContent">
+    <xs:sequence>
+      <xs:element name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getHitIndexedContentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getQueryResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
@@ -100,28 +137,35 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getQueryHitsMap">
+  <xs:complexType name="getQueryHitsNoDocumentMap">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getQueryHitsMapResponse">
+  <xs:complexType name="getQueryHitsNoDocumentMapResponse">
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hashMap"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hit"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="hashMap">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractMap">
-        <xs:sequence></xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractMap">
-    <xs:sequence></xs:sequence>
+  <xs:complexType name="hit">
+    <xs:sequence>
+      <xs:element name="dreFields">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="getlicenseinfo">
@@ -136,8 +180,36 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getSpellCheckFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSpellCheckFieldsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryHitsMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueryHitsMapResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hit"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getSpellCheckFields">
+    <wsdl:part element="tns:getSpellCheckFields" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getstatus">
     <wsdl:part element="tns:getstatus" name="parameters">
     </wsdl:part>
@@ -150,8 +222,16 @@
     <wsdl:part element="tns:getQueryHitsMapResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getHitIndexedContentResponse">
+    <wsdl:part element="tns:getHitIndexedContentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getQueryResponse">
     <wsdl:part element="tns:getQueryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHitIndexedContent">
+    <wsdl:part element="tns:getHitIndexedContent" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="grl">
@@ -168,6 +248,14 @@
   </wsdl:message>
   <wsdl:message name="getQueryHitsMap">
     <wsdl:part element="tns:getQueryHitsMap" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryHitsNoDocumentMapResponse">
+    <wsdl:part element="tns:getQueryHitsNoDocumentMapResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryHitsNoDocumentMap">
+    <wsdl:part element="tns:getQueryHitsNoDocumentMap" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getQueryResponseResponse">
@@ -194,6 +282,10 @@
     <wsdl:part element="tns:getversionResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getSpellCheckFieldsResponse">
+    <wsdl:part element="tns:getSpellCheckFieldsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="IdolOEMConnection">
     <wsdl:operation name="aciRequest">
       <wsdl:input message="tns:aciRequest" name="aciRequest">
@@ -205,6 +297,12 @@
       <wsdl:input message="tns:grl" name="grl">
     </wsdl:input>
       <wsdl:output message="tns:grlResponse" name="grlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHitIndexedContent">
+      <wsdl:input message="tns:getHitIndexedContent" name="getHitIndexedContent">
+    </wsdl:input>
+      <wsdl:output message="tns:getHitIndexedContentResponse" name="getHitIndexedContentResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getQueryResponse">
@@ -225,16 +323,28 @@
       <wsdl:output message="tns:getversionResponse" name="getversionResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getQueryHitsMap">
-      <wsdl:input message="tns:getQueryHitsMap" name="getQueryHitsMap">
+    <wsdl:operation name="getQueryHitsNoDocumentMap">
+      <wsdl:input message="tns:getQueryHitsNoDocumentMap" name="getQueryHitsNoDocumentMap">
     </wsdl:input>
-      <wsdl:output message="tns:getQueryHitsMapResponse" name="getQueryHitsMapResponse">
+      <wsdl:output message="tns:getQueryHitsNoDocumentMapResponse" name="getQueryHitsNoDocumentMapResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getlicenseinfo">
       <wsdl:input message="tns:getlicenseinfo" name="getlicenseinfo">
     </wsdl:input>
       <wsdl:output message="tns:getlicenseinfoResponse" name="getlicenseinfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpellCheckFields">
+      <wsdl:input message="tns:getSpellCheckFields" name="getSpellCheckFields">
+    </wsdl:input>
+      <wsdl:output message="tns:getSpellCheckFieldsResponse" name="getSpellCheckFieldsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryHitsMap">
+      <wsdl:input message="tns:getQueryHitsMap" name="getQueryHitsMap">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueryHitsMapResponse" name="getQueryHitsMapResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -258,6 +368,15 @@
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getHitIndexedContent">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getHitIndexedContent">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getHitIndexedContentResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getQueryResponse">
       <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="getQueryResponse">
@@ -276,6 +395,15 @@
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getQueryHitsNoDocumentMap">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getQueryHitsNoDocumentMap">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getQueryHitsNoDocumentMapResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getversion">
       <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="getversion">
@@ -285,21 +413,30 @@
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getQueryHitsMap">
-      <soap:operation soapAction="" style="document"></soap:operation>
-      <wsdl:input name="getQueryHitsMap">
-        <soap:body use="literal"></soap:body>
-      </wsdl:input>
-      <wsdl:output name="getQueryHitsMapResponse">
-        <soap:body use="literal"></soap:body>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getlicenseinfo">
       <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="getlicenseinfo">
         <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="getlicenseinfoResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpellCheckFields">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getSpellCheckFields">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getSpellCheckFieldsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryHitsMap">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getQueryHitsMap">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getQueryHitsMapResponse">
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
