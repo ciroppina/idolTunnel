@@ -60,7 +60,7 @@ import com.autonomy.aci.client.util.AciParameters;
 @WebService(serviceName="IdolOEMConnection")
 @Stateless
 @Startup
-public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.IdolOEMConnection {
+public class IdolOEMConnection {
 	
 	/**
 	 * relative path to the config properties file
@@ -119,7 +119,7 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	/**
 	 * Ritorna un FileInputStream relativo al file di configurazione dell'applicazione
 	 * @param eConfPath
-	 * @return
+	 * @return an InputStream representing the reader from a filesystem config file
 	 */
 	private static FileInputStream getPathAsStreamFrom(String eConfPath) {
 		if(eConfPath.isEmpty()) {
@@ -139,7 +139,8 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	private AciService aciService = null;
 
 	/**
-	 * Constructor: initialization of non-static properties
+	 * Constructor: initialization of non-static properties, 
+	 * then testing comnection and some service actions to an HP IDOL Server
 	 */
 	public IdolOEMConnection() {
         final String host = StringUtils.defaultIfEmpty(properties.getProperty("host"), "localhost");
@@ -177,8 +178,8 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 
 	/**
 	 * requests the action=grl for the more recent 'tail' requests
-	 * @return
-	 * @throws XPathExpressionException
+	 * 
+	 * @return: String - an HTML log page
 	 */
 	@WebMethod(operationName = "grl")
 	public String grl(long tail) {
@@ -196,6 +197,7 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	/**
 	 * executes the IDOL Server GetVersion action 
 	 * @return a String containing the Json compact response
+	 * 
 	 * @throws XPathExpressionException
 	 */
 	@WebMethod(operationName = "getversion")
@@ -221,8 +223,10 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 
 	/**
 	 * executes the IDOL Server GetLicenseInfo action 
+	 * <br/>
 	 * accepts the response format in: XML or Json
 	 * @return a String containing the XML/Json compact response
+	 * 
 	 * @throws XPathExpressionException
 	 */
 	@WebMethod(operationName="getlicenseinfo")
@@ -246,9 +250,10 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 
 	/**
 	 * executes the IDOL Server GetStatus action 
+	 * <br/>
 	 * accepts the response format in: XML or Json
+	 * 
 	 * @return a String containing the XML/Json compact response
-	 * @throws XPathExpressionException
 	 */
 	@WebMethod(operationName="getstatus")
 	public String getstatus() {
@@ -265,8 +270,8 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	
 	/**
 	 * accepts every ACI action and the return format: XML or Json
+	 * 
 	 * @return a String containing the XML/Json compact response
-	 * @throws XPathExpressionException
 	 */
 	@WebMethod(operationName="aciRequest")
 	public String aciRequest(Map<String, String> pList, String format) {
@@ -291,34 +296,10 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	}
 
 	
-//	/**
-//	 * input String-AUTNResponse  and return xml-Document
-//	 * @return a XML Document
-//	 * @throws XPathExpressionException
-//	 */
-//	@WebMethod(operationName="responseToDocument")
-//	public Document responseToXMLDocument(String response) {
-//		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance(); 
-//		DocumentBuilder builder;
-//		Document document = null;
-//		try {
-//			InputStream is = new ByteArrayInputStream(response.getBytes());
-//			builder = documentFactory.newDocumentBuilder();
-//			document = builder.parse(is);
-//		} catch (ParserConfigurationException e) {
-//			e.printStackTrace();
-//		} catch (SAXException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return document;
-//	}
-	
 	/**
-	 * Method catch response node from xml document
+	 * Method that catches response node from xml autnresponse
+	 * 
 	 * @return a XML Document
-	 * @throws XPathExpressionException
 	 */
 	@WebMethod(operationName="getQueryResponse")
 	public String getQueryResponse(String xml){
@@ -333,15 +314,55 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	}
 	
 	/**
-	 * Method return List<Map> when every map contains hit fields 
-	 * @return ArrayList<HashMap<String, String>> list of map hit
+	 * Method that extracts spellcheck nodes from the xml autnresponse
 	 * 
+	 * @return an String[], represented by a List<String> in the WSDL
 	 */
-	@WebMethod(operationName="getQueryHitsMap")
-	public ArrayList<HashMap<String, String>> getQueryHitsMap(String xml){
-		ArrayList<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
+	@WebMethod(operationName="getSpellCheckFields")
+	public String[] getSpellCheckFields(String xml){
+		String[] result = {"spellcheck returned no corrected terms", ""};
 		Document document = getDocumentFrom(xml);
 		
+		NodeList corrections = document.getElementsByTagName("autn:spelling");
+		if (corrections == null || corrections.item(0) == null) return result;
+		NodeList correctedQuery = document.getElementsByTagName("autn:spellingquery");
+		if (correctedQuery == null || correctedQuery.item(0) == null) return result;
+		
+		result[0] = "forse intedevi: " + corrections.item(0).getFirstChild().getNodeValue();
+		result[1] = "cerca invece: " + correctedQuery.item(0).getFirstChild().getNodeValue();
+		return result;
+	}
+	
+	/**
+	 * Method that extracts spellcheck nodes from the xml autnresponse
+	 * 
+	 * @return an String[], represented by a List<String> in the WSDL
+	 */
+	@WebMethod(operationName="getHitIndexedContent")
+	public String getHitIndexedContent(Map<String, String> hit){
+		String result = "no content indexed";
+		if (hit == null || hit.isEmpty() || hit.size() < 1) return result;
+		
+		if (hit.get("autn:content") != null)
+			result = hit.get("autn:content") ;
+
+		return result ;
+	}
+	
+	/**
+	 * Method that returns a List<Map> where every map contains hit's fields 
+	 *  and the autn:content text, BUT it do not contains <DOCUMENT> structure !
+	 *  <br/>
+	 *  Notice that: this method M^UST be invoked only for a print=indexText query !
+	 *  
+	 * @return ArrayList<Hit> list of Hit, each containing a Map (of dreFields)
+	 * 
+	 */
+	@WebMethod(operationName="getQueryHitsNoDocumentMap")
+	public ArrayList<Hit> getQueryHitsNoDocumentMap(String xml){
+		ArrayList<Hit> result = new ArrayList<Hit>();
+		
+		Document document = getDocumentFrom(xml);
 		NodeList hits = document.getElementsByTagName("autn:hit");
 
 		for(int i=0; i<hits.getLength(); i++) {
@@ -363,8 +384,60 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 							map.put(e2.getNodeName(), e2.getTextContent());
 						}
 						
+					} else {
+						if(e2.getNodeType() == Node.ELEMENT_NODE) {
+							String nodeValue = e2.getFirstChild().getTextContent();
+							//Element el = (Element) content;
+							String value= "";
+							if(map.containsKey(e2.getNodeName())){
+								value = map.get(e2.getNodeName()) + "," + nodeValue;
+								map.put(e2.getNodeName(), value);
+							}
+							else{
+								map.put(e2.getNodeName(), nodeValue);
+							}
+						}
 					}
-					else{
+				}
+			}
+			result.add(new Hit(map));
+		}
+		return result;
+	}
+	
+	/**
+	 * Method return List<Map> when every map contains hit fields 
+	 * 
+	 * @return ArrayList<Hit> list of Hit, each containing a Map (of dreFileds)
+	 * 
+	 */
+	@WebMethod(operationName="getQueryHitsMap")
+	public ArrayList<Hit> getQueryHitsMap(String xml){
+		ArrayList<Hit> result = new ArrayList<Hit>();
+
+		Document document = getDocumentFrom(xml);
+		NodeList hits = document.getElementsByTagName("autn:hit");
+
+		for(int i=0; i<hits.getLength(); i++) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			Node nodo = hits.item(i);
+			NodeList hitChilds = nodo.getChildNodes();
+			
+			for(int j=0;j<hitChilds.getLength(); j++){
+				Node n = hitChilds.item(j);
+				if(n.getNodeType() == Node.ELEMENT_NODE) {
+					Element e2 = (Element) n;
+					if(!e2.getNodeName().equals("autn:content")){
+						String value = "";
+						if(map.containsKey(e2.getNodeName())){
+							value = map.get(e2.getNodeName()) + "," + e2.getTextContent();
+							map.put(e2.getNodeName(), value);
+						}
+						else{
+							map.put(e2.getNodeName(), e2.getTextContent());
+						}
+						
+					} else {
 						NodeList content = e2.getElementsByTagName("DOCUMENT").item(0).getChildNodes();
 					
 						for(int z=0; z<content.getLength();z++){
@@ -384,7 +457,7 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 					}
 				}
 			}
-			result.add(map);
+			result.add(new Hit(map));
 		}
 		return result;
 	}
@@ -425,10 +498,9 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	}
 
 	/**
-	 * returns the ACI autnresponse in Json compact format
-	 * or any other byte-array format
 	 * @param autnresponse
-	 * @return
+	 * @return the ACI autnresponse in Json compact format or 
+	 * any other byte-array format
 	 */
 	private String jsonResponse(byte[] autnresponse) {
 		String result="";
@@ -437,9 +509,8 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
 	}
 
 	/**
-	 * returns the ACI aurtnresponse in XML compact format
 	 * @param response
-	 * @return
+	 * @return the ACI aurtnresponse in XML compact format
 	 */
 	private String xmlResponse(Document response) {	
 		String result ="";
@@ -471,5 +542,6 @@ public class IdolOEMConnection implements it.skymedia.idolTunnel.jaxws.client.Id
     public static void main(final String[] args) throws IOException {
     	new IdolOEMConnection();
     }
+
 }
 
