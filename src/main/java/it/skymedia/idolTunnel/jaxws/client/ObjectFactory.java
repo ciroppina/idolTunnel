@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import java.util.HashMap;
 
 /**
  * This object contains factory methods for each 
@@ -25,26 +24,64 @@ import java.util.HashMap;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GrlResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "grlResponse");
-    private final static QName _GetQueryHitsMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMap");
+    private final static QName _GetSpellCheckFields_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckFields");
     private final static QName _Getstatus_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatus");
     private final static QName _GetstatusResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatusResponse");
     private final static QName _GetQueryHitsMapResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMapResponse");
-    private final static QName _GetQueryResponseResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponseResponse");
-    private final static QName _Getversion_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversion");
-    private final static QName _AciRequestResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequestResponse");
-    private final static QName _AciRequest_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequest");
     private final static QName _GetQueryResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponse");
-    private final static QName _Getlicenseinfo_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfo");
-    private final static QName _GetversionResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversionResponse");
+    private final static QName _GetHitIndexedContentResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getHitIndexedContentResponse");
+    private final static QName _GetHitIndexedContent_QNAME = new QName("http://idolTunnel.skymedia.it/", "getHitIndexedContent");
     private final static QName _Grl_QNAME = new QName("http://idolTunnel.skymedia.it/", "grl");
     private final static QName _GetlicenseinfoResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfoResponse");
+    private final static QName _GrlResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "grlResponse");
+    private final static QName _GetQueryHitsMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMap");
+    private final static QName _GetQueryHitsNoDocumentMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsNoDocumentMap");
+    private final static QName _GetQueryHitsNoDocumentMapResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsNoDocumentMapResponse");
+    private final static QName _Getversion_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversion");
+    private final static QName _GetQueryResponseResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponseResponse");
+    private final static QName _AciRequestResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequestResponse");
+    private final static QName _GetversionResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversionResponse");
+    private final static QName _Getlicenseinfo_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfo");
+    private final static QName _AciRequest_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequest");
+    private final static QName _GetSpellCheckFieldsResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckFieldsResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: it.skymedia.idolTunnel.jaxws.client
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link Hit }
+     * 
+     */
+    public Hit createHit() {
+        return new Hit();
+    }
+
+    /**
+     * Create an instance of {@link Hit.DreFields }
+     * 
+     */
+    public Hit.DreFields createHitDreFields() {
+        return new Hit.DreFields();
+    }
+
+    /**
+     * Create an instance of {@link GetHitIndexedContent }
+     * 
+     */
+    public GetHitIndexedContent createGetHitIndexedContent() {
+        return new GetHitIndexedContent();
+    }
+
+    /**
+     * Create an instance of {@link GetHitIndexedContent.Arg0 }
+     * 
+     */
+    public GetHitIndexedContent.Arg0 createGetHitIndexedContentArg0() {
+        return new GetHitIndexedContent.Arg0();
     }
 
     /**
@@ -61,6 +98,22 @@ public class ObjectFactory {
      */
     public AciRequest.Arg0 createAciRequestArg0() {
         return new AciRequest.Arg0();
+    }
+
+    /**
+     * Create an instance of {@link GetQueryHitsNoDocumentMap }
+     * 
+     */
+    public GetQueryHitsNoDocumentMap createGetQueryHitsNoDocumentMap() {
+        return new GetQueryHitsNoDocumentMap();
+    }
+
+    /**
+     * Create an instance of {@link GetQueryHitsNoDocumentMapResponse }
+     * 
+     */
+    public GetQueryHitsNoDocumentMapResponse createGetQueryHitsNoDocumentMapResponse() {
+        return new GetQueryHitsNoDocumentMapResponse();
     }
 
     /**
@@ -104,6 +157,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetSpellCheckFieldsResponse }
+     * 
+     */
+    public GetSpellCheckFieldsResponse createGetSpellCheckFieldsResponse() {
+        return new GetSpellCheckFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GrlResponse }
+     * 
+     */
+    public GrlResponse createGrlResponse() {
+        return new GrlResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetQueryHitsMap }
+     * 
+     */
+    public GetQueryHitsMap createGetQueryHitsMap() {
+        return new GetQueryHitsMap();
+    }
+
+    /**
+     * Create an instance of {@link GetHitIndexedContentResponse }
+     * 
+     */
+    public GetHitIndexedContentResponse createGetHitIndexedContentResponse() {
+        return new GetHitIndexedContentResponse();
+    }
+
+    /**
      * Create an instance of {@link GetQueryResponse }
      * 
      */
@@ -128,19 +213,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GrlResponse }
+     * Create an instance of {@link GetSpellCheckFields }
      * 
      */
-    public GrlResponse createGrlResponse() {
-        return new GrlResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetQueryHitsMap }
-     * 
-     */
-    public GetQueryHitsMap createGetQueryHitsMap() {
-        return new GetQueryHitsMap();
+    public GetSpellCheckFields createGetSpellCheckFields() {
+        return new GetSpellCheckFields();
     }
 
     /**
@@ -168,11 +245,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HashMap }
+     * Create an instance of {@link Hit.DreFields.Entry }
      * 
      */
-    public HashMap<String, String> createHashMap() {
-        return new HashMap<String, String>();
+    public Hit.DreFields.Entry createHitDreFieldsEntry() {
+        return new Hit.DreFields.Entry();
+    }
+
+    /**
+     * Create an instance of {@link GetHitIndexedContent.Arg0 .Entry }
+     * 
+     */
+    public GetHitIndexedContent.Arg0 .Entry createGetHitIndexedContentArg0Entry() {
+        return new GetHitIndexedContent.Arg0 .Entry();
     }
 
     /**
@@ -184,21 +269,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GrlResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSpellCheckFields }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "grlResponse")
-    public JAXBElement<GrlResponse> createGrlResponse(GrlResponse value) {
-        return new JAXBElement<GrlResponse>(_GrlResponse_QNAME, GrlResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsMap }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsMap")
-    public JAXBElement<GetQueryHitsMap> createGetQueryHitsMap(GetQueryHitsMap value) {
-        return new JAXBElement<GetQueryHitsMap>(_GetQueryHitsMap_QNAME, GetQueryHitsMap.class, null, value);
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getSpellCheckFields")
+    public JAXBElement<GetSpellCheckFields> createGetSpellCheckFields(GetSpellCheckFields value) {
+        return new JAXBElement<GetSpellCheckFields>(_GetSpellCheckFields_QNAME, GetSpellCheckFields.class, null, value);
     }
 
     /**
@@ -229,42 +305,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryResponseResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryResponseResponse")
-    public JAXBElement<GetQueryResponseResponse> createGetQueryResponseResponse(GetQueryResponseResponse value) {
-        return new JAXBElement<GetQueryResponseResponse>(_GetQueryResponseResponse_QNAME, GetQueryResponseResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Getversion }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getversion")
-    public JAXBElement<Getversion> createGetversion(Getversion value) {
-        return new JAXBElement<Getversion>(_Getversion_QNAME, Getversion.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequestResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequestResponse")
-    public JAXBElement<AciRequestResponse> createAciRequestResponse(AciRequestResponse value) {
-        return new JAXBElement<AciRequestResponse>(_AciRequestResponse_QNAME, AciRequestResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequest }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequest")
-    public JAXBElement<AciRequest> createAciRequest(AciRequest value) {
-        return new JAXBElement<AciRequest>(_AciRequest_QNAME, AciRequest.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryResponse }{@code >}}
      * 
      */
@@ -274,21 +314,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Getlicenseinfo }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetHitIndexedContentResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getlicenseinfo")
-    public JAXBElement<Getlicenseinfo> createGetlicenseinfo(Getlicenseinfo value) {
-        return new JAXBElement<Getlicenseinfo>(_Getlicenseinfo_QNAME, Getlicenseinfo.class, null, value);
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getHitIndexedContentResponse")
+    public JAXBElement<GetHitIndexedContentResponse> createGetHitIndexedContentResponse(GetHitIndexedContentResponse value) {
+        return new JAXBElement<GetHitIndexedContentResponse>(_GetHitIndexedContentResponse_QNAME, GetHitIndexedContentResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetversionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetHitIndexedContent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getversionResponse")
-    public JAXBElement<GetversionResponse> createGetversionResponse(GetversionResponse value) {
-        return new JAXBElement<GetversionResponse>(_GetversionResponse_QNAME, GetversionResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getHitIndexedContent")
+    public JAXBElement<GetHitIndexedContent> createGetHitIndexedContent(GetHitIndexedContent value) {
+        return new JAXBElement<GetHitIndexedContent>(_GetHitIndexedContent_QNAME, GetHitIndexedContent.class, null, value);
     }
 
     /**
@@ -307,6 +347,105 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getlicenseinfoResponse")
     public JAXBElement<GetlicenseinfoResponse> createGetlicenseinfoResponse(GetlicenseinfoResponse value) {
         return new JAXBElement<GetlicenseinfoResponse>(_GetlicenseinfoResponse_QNAME, GetlicenseinfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GrlResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "grlResponse")
+    public JAXBElement<GrlResponse> createGrlResponse(GrlResponse value) {
+        return new JAXBElement<GrlResponse>(_GrlResponse_QNAME, GrlResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsMap }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsMap")
+    public JAXBElement<GetQueryHitsMap> createGetQueryHitsMap(GetQueryHitsMap value) {
+        return new JAXBElement<GetQueryHitsMap>(_GetQueryHitsMap_QNAME, GetQueryHitsMap.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsNoDocumentMap }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsNoDocumentMap")
+    public JAXBElement<GetQueryHitsNoDocumentMap> createGetQueryHitsNoDocumentMap(GetQueryHitsNoDocumentMap value) {
+        return new JAXBElement<GetQueryHitsNoDocumentMap>(_GetQueryHitsNoDocumentMap_QNAME, GetQueryHitsNoDocumentMap.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsNoDocumentMapResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsNoDocumentMapResponse")
+    public JAXBElement<GetQueryHitsNoDocumentMapResponse> createGetQueryHitsNoDocumentMapResponse(GetQueryHitsNoDocumentMapResponse value) {
+        return new JAXBElement<GetQueryHitsNoDocumentMapResponse>(_GetQueryHitsNoDocumentMapResponse_QNAME, GetQueryHitsNoDocumentMapResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Getversion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getversion")
+    public JAXBElement<Getversion> createGetversion(Getversion value) {
+        return new JAXBElement<Getversion>(_Getversion_QNAME, Getversion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryResponseResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryResponseResponse")
+    public JAXBElement<GetQueryResponseResponse> createGetQueryResponseResponse(GetQueryResponseResponse value) {
+        return new JAXBElement<GetQueryResponseResponse>(_GetQueryResponseResponse_QNAME, GetQueryResponseResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequestResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequestResponse")
+    public JAXBElement<AciRequestResponse> createAciRequestResponse(AciRequestResponse value) {
+        return new JAXBElement<AciRequestResponse>(_AciRequestResponse_QNAME, AciRequestResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetversionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getversionResponse")
+    public JAXBElement<GetversionResponse> createGetversionResponse(GetversionResponse value) {
+        return new JAXBElement<GetversionResponse>(_GetversionResponse_QNAME, GetversionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Getlicenseinfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getlicenseinfo")
+    public JAXBElement<Getlicenseinfo> createGetlicenseinfo(Getlicenseinfo value) {
+        return new JAXBElement<Getlicenseinfo>(_Getlicenseinfo_QNAME, Getlicenseinfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequest")
+    public JAXBElement<AciRequest> createAciRequest(AciRequest value) {
+        return new JAXBElement<AciRequest>(_AciRequest_QNAME, AciRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSpellCheckFieldsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getSpellCheckFieldsResponse")
+    public JAXBElement<GetSpellCheckFieldsResponse> createGetSpellCheckFieldsResponse(GetSpellCheckFieldsResponse value) {
+        return new JAXBElement<GetSpellCheckFieldsResponse>(_GetSpellCheckFieldsResponse_QNAME, GetSpellCheckFieldsResponse.class, null, value);
     }
 
 }

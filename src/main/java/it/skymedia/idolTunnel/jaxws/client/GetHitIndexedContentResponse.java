@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getversionResponse complex type.
+ * <p>Classe Java per getHitIndexedContentResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getversionResponse">
+ * &lt;complexType name="getHitIndexedContentResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,16 +27,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getversionResponse", propOrder = {
+@XmlType(name = "getHitIndexedContentResponse", propOrder = {
     "_return"
 })
-public class GetversionResponse {
+public class GetHitIndexedContentResponse {
 
     @XmlElement(name = "return")
     protected String _return;
 
     /**
-     * Recupera il valore della proprietà return.
+     * Recupera il valore della proprietà.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetversionResponse {
     }
 
     /**
-     * Imposta il valore della proprietà return.
+     * Imposta il valore della proprietà.
      * 
      * @param value
      *     allowed object is

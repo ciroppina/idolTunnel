@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getQueryHitsMapResponse complex type.
+ * <p>Classe Java per getQueryHitsNoDocumentMapResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getQueryHitsMapResponse">
+ * &lt;complexType name="getQueryHitsNoDocumentMapResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getQueryHitsMapResponse", propOrder = {
+@XmlType(name = "getQueryHitsNoDocumentMapResponse", propOrder = {
     "_return"
 })
-public class GetQueryHitsMapResponse {
+public class GetQueryHitsNoDocumentMapResponse {
 
     @XmlElement(name = "return")
     protected List<Hit> _return;

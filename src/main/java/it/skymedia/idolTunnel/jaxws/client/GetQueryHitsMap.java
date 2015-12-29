@@ -34,7 +34,7 @@ public class GetQueryHitsMap {
     protected String arg0;
 
     /**
-     * Recupera il valore della propriet‡ arg0.
+     * Recupera il valore della propriet√†.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetQueryHitsMap {
     }
 
     /**
-     * Imposta il valore della propriet‡ arg0.
+     * Imposta il valore della propriet√†.
      * 
      * @param value
      *     allowed object is

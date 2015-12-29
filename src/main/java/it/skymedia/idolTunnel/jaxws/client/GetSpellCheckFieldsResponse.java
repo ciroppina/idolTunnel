@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getQueryHitsMapResponse complex type.
+ * <p>Classe Java per getSpellCheckFieldsResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getQueryHitsMapResponse">
+ * &lt;complexType name="getSpellCheckFieldsResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://idolTunnel.skymedia.it/}hit" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getQueryHitsMapResponse", propOrder = {
+@XmlType(name = "getSpellCheckFieldsResponse", propOrder = {
     "_return"
 })
-public class GetQueryHitsMapResponse {
+public class GetSpellCheckFieldsResponse {
 
     @XmlElement(name = "return")
-    protected List<Hit> _return;
+    protected List<String> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class GetQueryHitsMapResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Hit }
+     * {@link String }
      * 
      * 
      */
-    public List<Hit> getReturn() {
+    public List<String> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<Hit>();
+            _return = new ArrayList<String>();
         }
         return this._return;
     }

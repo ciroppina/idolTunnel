@@ -34,7 +34,7 @@ public class Grl {
     protected long arg0;
 
     /**
-     * Recupera il valore della propriet‡ arg0.
+     * Recupera il valore della propriet√†.
      * 
      */
     public long getArg0() {
@@ -42,7 +42,7 @@ public class Grl {
     }
 
     /**
-     * Imposta il valore della propriet‡ arg0.
+     * Imposta il valore della propriet√†.
      * 
      */
     public void setArg0(long value) {

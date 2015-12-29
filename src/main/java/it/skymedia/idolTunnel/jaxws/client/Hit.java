@@ -12,16 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per aciRequest complex type.
+ * <p>Classe Java per hit complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="aciRequest">
+ * &lt;complexType name="hit">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0">
+ *         &lt;element name="dreFields">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -43,7 +43,6 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -53,62 +52,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "aciRequest", propOrder = {
-    "arg0",
-    "arg1"
+@XmlType(name = "hit", propOrder = {
+    "dreFields"
 })
-public class AciRequest {
+public class Hit {
 
     @XmlElement(required = true)
-    protected HashMap<String, String> arg0;
-    protected String arg1;
+    protected HashMap<String, String> dreFields;
 
     /**
-     * Recupera il valore della proprietà arg0.
+     * Recupera il valore della proprietà dreFields.
      * 
      * @return
      *     possible object is
-     *     {@link AciRequest.Arg0 }
+     *     {@link Hit.DreFields }
      *     
      */
-    public HashMap<String, String> getArg0() {
-        return arg0;
+    public HashMap<String, String> getDreFields() {
+        return dreFields;
     }
 
     /**
-     * Imposta il valore della proprietà.
+     * Imposta il valore della proprietà dreFields.
      * 
      * @param value
      *     allowed object is
-     *     {@link AciRequest.Arg0 }
+     *     {@link Hit.DreFields }
      *     
      */
-    public void setArg0(HashMap<String, String> value) {
-        this.arg0 = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà arg1.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getArg1() {
-        return arg1;
-    }
-
-    /**
-     * Imposta il valore della proprietà arg1.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setArg1(String value) {
-        this.arg1 = value;
+    public void setDreFields(HashMap<String, String> value) {
+        this.dreFields = value;
     }
 
 
@@ -146,9 +119,9 @@ public class AciRequest {
     @XmlType(name = "", propOrder = {
         "entry"
     })
-    public static class Arg0 {
+    public static class DreFields {
 
-        protected List<AciRequest.Arg0 .Entry> entry;
+        protected List<Hit.DreFields.Entry> entry;
 
         /**
          * Gets the value of the entry property.
@@ -168,13 +141,13 @@ public class AciRequest {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link AciRequest.Arg0 .Entry }
+         * {@link Hit.DreFields.Entry }
          * 
          * 
          */
-        public List<AciRequest.Arg0 .Entry> getEntry() {
+        public List<Hit.DreFields.Entry> getEntry() {
             if (entry == null) {
-                entry = new ArrayList<AciRequest.Arg0 .Entry>();
+                entry = new ArrayList<Hit.DreFields.Entry>();
             }
             return this.entry;
         }

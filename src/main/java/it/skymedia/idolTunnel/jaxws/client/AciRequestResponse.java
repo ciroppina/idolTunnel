@@ -36,7 +36,7 @@ public class AciRequestResponse {
     protected String _return;
 
     /**
-     * Recupera il valore della propriet‡ return.
+     * Recupera il valore della propriet√†.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class AciRequestResponse {
     }
 
     /**
-     * Imposta il valore della propriet‡ return.
+     * Imposta il valore della propriet√†.
      * 
      * @param value
      *     allowed object is
