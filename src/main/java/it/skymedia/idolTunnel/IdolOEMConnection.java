@@ -327,6 +327,20 @@ public class IdolOEMConnection {
 	}
 	
 	/**
+	 * Method that returns  spellcheck nodes from the xml autnresponse
+	 * <br/>
+	 * Notice that the proper action should have: spellCheck=true 
+	 * and print=noresults params
+	 * 
+	 * @return an String[], represented by a List<String> in the WSDL
+	 */
+	@WebMethod(operationName="getSpellCheck")
+	public String[] getSpellCheck(Map<String, String> action) {
+		String autnresponse = this.autnResponseAsString(action, "xml");
+		return getSpellCheckFields(autnresponse);
+	}
+	
+	/**
 	 * Method that extracts spellcheck nodes from the xml autnresponse
 	 * 
 	 * @return an String[], represented by a List<String> in the WSDL

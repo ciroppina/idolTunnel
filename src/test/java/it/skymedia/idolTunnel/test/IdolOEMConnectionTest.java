@@ -35,7 +35,7 @@ public class IdolOEMConnectionTest {
 	}
 	
 	@Test
-	public void testAciRequest() throws Exception {
+	public void testAutnResponseAsString() throws Exception {
 		Map<String, String> pList = new HashMap<String, String>();
 		pList.put("action", "query");
 		pList.put("text", "*");
@@ -77,6 +77,25 @@ public class IdolOEMConnectionTest {
 		String result = ic.getQueryResponse(autnresponse);
 		
 		assertTrue("RESPONSE-NODE should be SUCCESS!", result.equals(expected));
+	}
+	
+	@Test
+	public void testAutnResponseAsList() throws Exception {
+		
+		Map<String, String> pList = new HashMap<String, String>();
+		pList.put("action", "query");
+		pList.put("text", "*");
+		pList.put("anylanguage", "true");
+		pList.put("maxresults", "25");
+		pList.put("databasematch", "");
+		pList.put("combine", "simple");
+		pList.put("outputencoding", "utf8");
+		pList.put("totalResults", "true");
+		
+		int size = 25;
+		ArrayList<Hit> listOfHits = ic.autnResponseAsList(pList, "xml");
+		
+		assertTrue("Result List Size should be 25!", listOfHits.size()== size);
 	}
 	
 	@Test
@@ -148,6 +167,32 @@ public class IdolOEMConnectionTest {
 		assertTrue("Result should contains two not empty fields", 
 				spellCheckFields.length > 1 
 				&& spellCheckFields[1].length() < 1
+				&& spellCheckFields[0].length() > 0 
+		);
+		
+		//debug;
+		System.out.println("\n\tSPELLCHECK FIELDS :\n" + 
+				spellCheckFields[0] + "\n" + spellCheckFields[1]
+		);
+	}
+	
+	@Test
+	public void testGetSpellCheck() throws Exception {
+		
+		Map<String, String> pList = new HashMap<String, String>();
+		pList.put("action", "query");
+		pList.put("text", "latitnte indagto ompuatto");
+		pList.put("anylanguage", "true");
+		pList.put("print", "noresults");
+		pList.put("spellcheck", "true");
+		pList.put("SpellCheckAlphaNumeric", "false");
+		pList.put("outputencoding", "utf8");
+		
+		String[] spellCheckFields = ic.getSpellCheck(pList);
+		
+		assertTrue("Result should contains two not empty fields", 
+				spellCheckFields.length > 1 
+				&& spellCheckFields[1].length() > 0
 				&& spellCheckFields[0].length() > 0 
 		);
 		

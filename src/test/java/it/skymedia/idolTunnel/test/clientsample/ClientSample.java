@@ -40,16 +40,45 @@ public class ClientSample {
 
 		//action with spellCheck
 		aCallToSpellCheckFunction(ic);
+		anotherCallToSpellCheck(ic);
 		
 		//action with print=indexText (only one content String)
 		ic = new IdolOEMConnection_Service().getIdolOEMConnectionPort();
 		aQueryWithPrintIndexTextFunction(ic);
+		
+		//action to autnResponseAsList web-method
+		ic = new IdolOEMConnection_Service().getIdolOEMConnectionPort();
+		aQueryReturningListOfHits(ic);
 		
         System.out.println("***********************");
         System.out.println("Call Over!");
         /**
          * console output ends here
          */
+	}
+	
+	/**
+	 * an ACTION=QUERY that returns 25 Hit(s) objects
+	 * <br/>
+	 *  
+	 * @return a List<Hit> (the text content)
+	 * 
+	 * @param ic - a webservice port
+	 */
+	public static void aQueryReturningListOfHits(IdolOEMConnection ic) {
+		HashMap<String, String> pList;
+		List<Hit> listOfHits;
+		
+		//new Objects-based method call
+		pList = new HashMap<String, String>();
+		pList.put("action", "query");
+		pList.put("text", "imputato indagato latitante");
+		pList.put("anylanguage", "true");
+		pList.put("maxresults", "25");
+		pList.put("outputencoding", "utf8");
+		
+		listOfHits = ic.autnResponseAsList(pList, "xml");
+		System.out.println("Server said: Returned Hits: \n" + listOfHits.size());
 	}
 
 	/**
@@ -112,6 +141,34 @@ public class ClientSample {
 			+ list.get(1));
 	}
 	
+	/**
+	 * an ACTION=QUERY adding text with uncorrect words and spellCheck=true
+	 * <br/>
+	 * Notice that the the getSpellCheckFields web-method accepts the XML-Only autnresponse
+	 * and returns a Java ArrayList< String >, where:
+	 * - the 1st List item is String of corrected italian words (autn:spelling)
+	 * - the 2nd List item is the newly-corrected query, for next query purpose (autn:spellingQuery)
+	 * 
+	 * @param ic
+	 */
+	public static void anotherCallToSpellCheck(IdolOEMConnection ic) {
+		HashMap<String, String> pList;
+
+		//new Objects-based method call
+		pList = new HashMap<String, String>();
+		pList.put("action", "query");
+		pList.put("text", "latitnte ingadato impuatto");
+		pList.put("anylanguage", "true");
+		pList.put("spellcheck", "true");
+		pList.put("print", "noresults");
+		pList.put("outputencoding", "utf8");
+		
+		List<String> list = ic.getSpellCheck(pList);
+		System.out.println("Server said: spellCheck fields: \n" 
+			+ list.get(0)+"\n"
+			+ list.get(1));
+	}
+
 	/**
 	 * another ACTION=QUERY to show how to get the Java List of <AUTNRESPONSE>...<autn:hits> 
 	 * from the SOAP port ic
