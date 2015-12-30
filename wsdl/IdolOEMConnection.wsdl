@@ -26,9 +26,13 @@
 
   <xs:element name="getQueryResponseResponse" type="tns:getQueryResponseResponse"></xs:element>
 
+  <xs:element name="getSpellCheck" type="tns:getSpellCheck"></xs:element>
+
   <xs:element name="getSpellCheckFields" type="tns:getSpellCheckFields"></xs:element>
 
   <xs:element name="getSpellCheckFieldsResponse" type="tns:getSpellCheckFieldsResponse"></xs:element>
+
+  <xs:element name="getSpellCheckResponse" type="tns:getSpellCheckResponse"></xs:element>
 
   <xs:element name="getlicenseinfo" type="tns:getlicenseinfo"></xs:element>
 
@@ -128,6 +132,31 @@
   <xs:complexType name="getstatusResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSpellCheck">
+    <xs:sequence>
+      <xs:element name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSpellCheckResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -257,6 +286,10 @@
     <wsdl:part element="tns:getSpellCheckFields" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getSpellCheck">
+    <wsdl:part element="tns:getSpellCheck" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getstatus">
     <wsdl:part element="tns:getstatus" name="parameters">
     </wsdl:part>
@@ -283,6 +316,10 @@
   </wsdl:message>
   <wsdl:message name="grl">
     <wsdl:part element="tns:grl" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpellCheckResponse">
+    <wsdl:part element="tns:getSpellCheckResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getlicenseinfoResponse">
@@ -313,12 +350,12 @@
     <wsdl:part element="tns:getQueryHitsNoDocumentMap" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getQueryResponseResponse">
-    <wsdl:part element="tns:getQueryResponseResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getversion">
     <wsdl:part element="tns:getversion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryResponseResponse">
+    <wsdl:part element="tns:getQueryResponseResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getlicenseinfo">
@@ -366,6 +403,12 @@
       <wsdl:input message="tns:getstatus" name="getstatus">
     </wsdl:input>
       <wsdl:output message="tns:getstatusResponse" name="getstatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpellCheck">
+      <wsdl:input message="tns:getSpellCheck" name="getSpellCheck">
+    </wsdl:input>
+      <wsdl:output message="tns:getSpellCheckResponse" name="getSpellCheckResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getversion">
@@ -440,6 +483,15 @@
         <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="getQueryResponseResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpellCheck">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getSpellCheck">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getSpellCheckResponse">
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
