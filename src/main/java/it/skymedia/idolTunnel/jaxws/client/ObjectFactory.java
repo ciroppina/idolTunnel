@@ -27,6 +27,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _AutnResponseAsListResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "autnResponseAsListResponse");
+    private final static QName _GetSpellCheck_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheck");
     private final static QName _GetSpellCheckFields_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckFields");
     private final static QName _Getstatus_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatus");
     private final static QName _GetstatusResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatusResponse");
@@ -34,6 +35,7 @@ public class ObjectFactory {
     private final static QName _GetQueryResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponse");
     private final static QName _GetHitIndexedContentResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getHitIndexedContentResponse");
     private final static QName _GetHitIndexedContent_QNAME = new QName("http://idolTunnel.skymedia.it/", "getHitIndexedContent");
+    private final static QName _GetSpellCheckResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckResponse");
     private final static QName _Grl_QNAME = new QName("http://idolTunnel.skymedia.it/", "grl");
     private final static QName _GetlicenseinfoResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfoResponse");
     private final static QName _GrlResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "grlResponse");
@@ -68,8 +70,24 @@ public class ObjectFactory {
      * Create an instance of {@link Hit.DreFields }
      * 
      */
-    public HashMap<String, String> createHitDreFields() {
-        return new HashMap<String, String>();
+    public HashMap<String, String > createHitDreFields() {
+        return new HashMap<String, String >();
+    }
+
+    /**
+     * Create an instance of {@link GetSpellCheck }
+     * 
+     */
+    public GetSpellCheck createGetSpellCheck() {
+        return new GetSpellCheck();
+    }
+
+    /**
+     * Create an instance of {@link GetSpellCheck.Arg0 }
+     * 
+     */
+    public HashMap<String, String > createGetSpellCheckArg0() {
+        return new HashMap<String, String >();
     }
 
     /**
@@ -84,8 +102,8 @@ public class ObjectFactory {
      * Create an instance of {@link GetHitIndexedContent.Arg0 }
      * 
      */
-    public HashMap<String, String> createGetHitIndexedContentArg0() {
-        return new HashMap<String, String>();
+    public HashMap<String, String > createGetHitIndexedContentArg0() {
+        return new HashMap<String, String >();
     }
 
     /**
@@ -100,8 +118,8 @@ public class ObjectFactory {
      * Create an instance of {@link AutnResponseAsString.Arg0 }
      * 
      */
-    public HashMap<String, String> createAutnResponseAsStringArg0() {
-        return new HashMap<String, String>();
+    public HashMap<String, String > createAutnResponseAsStringArg0() {
+        return new HashMap<String, String >();
     }
 
     /**
@@ -116,8 +134,8 @@ public class ObjectFactory {
      * Create an instance of {@link AutnResponseAsList.Arg0 }
      * 
      */
-    public HashMap<String, String> createAutnResponseAsListArg0() {
-        return new HashMap<String, String>();
+    public HashMap<String, String > createAutnResponseAsListArg0() {
+        return new HashMap<String, String >();
     }
 
     /**
@@ -225,6 +243,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetSpellCheckResponse }
+     * 
+     */
+    public GetSpellCheckResponse createGetSpellCheckResponse() {
+        return new GetSpellCheckResponse();
+    }
+
+    /**
      * Create an instance of {@link GetlicenseinfoResponse }
      * 
      */
@@ -279,6 +305,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "autnResponseAsListResponse")
     public JAXBElement<AutnResponseAsListResponse> createAutnResponseAsListResponse(AutnResponseAsListResponse value) {
         return new JAXBElement<AutnResponseAsListResponse>(_AutnResponseAsListResponse_QNAME, AutnResponseAsListResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSpellCheck }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getSpellCheck")
+    public JAXBElement<GetSpellCheck> createGetSpellCheck(GetSpellCheck value) {
+        return new JAXBElement<GetSpellCheck>(_GetSpellCheck_QNAME, GetSpellCheck.class, null, value);
     }
 
     /**
@@ -342,6 +377,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getHitIndexedContent")
     public JAXBElement<GetHitIndexedContent> createGetHitIndexedContent(GetHitIndexedContent value) {
         return new JAXBElement<GetHitIndexedContent>(_GetHitIndexedContent_QNAME, GetHitIndexedContent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSpellCheckResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getSpellCheckResponse")
+    public JAXBElement<GetSpellCheckResponse> createGetSpellCheckResponse(GetSpellCheckResponse value) {
+        return new JAXBElement<GetSpellCheckResponse>(_GetSpellCheckResponse_QNAME, GetSpellCheckResponse.class, null, value);
     }
 
     /**

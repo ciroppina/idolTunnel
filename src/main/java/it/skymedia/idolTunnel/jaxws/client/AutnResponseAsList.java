@@ -58,7 +58,7 @@ import javax.xml.bind.annotation.XmlType;
 public class AutnResponseAsList {
 
     @XmlElement(required = true)
-    protected HashMap<String, String> arg0;
+    protected HashMap<String, String > arg0;
     protected String arg1;
 
     /**
@@ -66,10 +66,10 @@ public class AutnResponseAsList {
      * 
      * @return
      *     possible object is
-     *     {@link AutnResponseAsList.Arg0 }
+     *     {@link HashMap<String, String > }
      *     
      */
-    public HashMap<String, String> getArg0() {
+    public HashMap<String, String > getArg0() {
         return arg0;
     }
 
@@ -78,10 +78,10 @@ public class AutnResponseAsList {
      * 
      * @param value
      *     allowed object is
-     *     {@link AutnResponseAsList.Arg0 }
+     *     {@link HashMap<String, String > }
      *     
      */
-    public void setArg0(HashMap<String, String> value) {
+    public void setArg0(HashMap<String, String > value) {
         this.arg0 = value;
     }
 

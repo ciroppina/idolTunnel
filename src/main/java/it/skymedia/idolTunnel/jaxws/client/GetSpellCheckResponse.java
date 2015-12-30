@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getSpellCheckFieldsResponse complex type.
+ * <p>Classe Java per getSpellCheckResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getSpellCheckFieldsResponse">
+ * &lt;complexType name="getSpellCheckResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -30,10 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getSpellCheckFieldsResponse", propOrder = {
+@XmlType(name = "getSpellCheckResponse", propOrder = {
     "_return"
 })
-public class GetSpellCheckFieldsResponse {
+public class GetSpellCheckResponse {
 
     @XmlElement(name = "return")
     protected List<String> _return;

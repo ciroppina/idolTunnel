@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getHitIndexedContent complex type.
+ * <p>Classe Java per getSpellCheck complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getHitIndexedContent">
+ * &lt;complexType name="getSpellCheck">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -50,10 +50,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getHitIndexedContent", propOrder = {
+@XmlType(name = "getSpellCheck", propOrder = {
     "arg0"
 })
-public class GetHitIndexedContent {
+public class GetSpellCheck {
 
     @XmlElement(required = true)
     protected HashMap<String, String > arg0;

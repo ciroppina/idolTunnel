@@ -88,7 +88,7 @@ public class Hit {
     @XmlElement(name = "DREREFERENCE")
     protected String drereference;
     @XmlElement(required = true)
-    protected HashMap<String, String> dreFields;
+    protected HashMap<String, String > dreFields;
     @XmlElement(name = "INDEXEDCONTENT")
     protected String indexedcontent;
     @XmlElement(name = "PAGECOUNT")
@@ -187,10 +187,10 @@ public class Hit {
      * 
      * @return
      *     possible object is
-     *     {@link Hit.DreFields }
+     *     {@link HashMap<String, String > }
      *     
      */
-    public HashMap<String, String> getDreFields() {
+    public HashMap<String, String > getDreFields() {
         return dreFields;
     }
 
@@ -199,10 +199,10 @@ public class Hit {
      * 
      * @param value
      *     allowed object is
-     *     {@link Hit.DreFields }
+     *     {@link HashMap<String, String > }
      *     
      */
-    public void setDreFields(HashMap<String, String> value) {
+    public void setDreFields(HashMap<String, String > value) {
         this.dreFields = value;
     }
 
