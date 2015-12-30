@@ -36,7 +36,7 @@ public class GetversionResponse {
     protected String _return;
 
     /**
-     * Recupera il valore della proprietà return.
+     * Recupera il valore della proprieta return.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetversionResponse {
     }
 
     /**
-     * Imposta il valore della proprietà return.
+     * Imposta il valore della proprieta return.
      * 
      * @param value
      *     allowed object is

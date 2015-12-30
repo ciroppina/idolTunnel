@@ -36,7 +36,7 @@ public class GetHitIndexedContentResponse {
     protected String _return;
 
     /**
-     * Recupera il valore della proprietà.
+     * Recupera il valore della proprieta return.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetHitIndexedContentResponse {
     }
 
     /**
-     * Imposta il valore della proprietà.
+     * Imposta il valore della proprieta return.
      * 
      * @param value
      *     allowed object is

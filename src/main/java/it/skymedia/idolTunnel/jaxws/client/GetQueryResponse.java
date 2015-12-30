@@ -34,7 +34,7 @@ public class GetQueryResponse {
     protected String arg0;
 
     /**
-     * Recupera il valore della proprietà.
+     * Recupera il valore della proprieta arg0.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetQueryResponse {
     }
 
     /**
-     * Imposta il valore della proprietà.
+     * Imposta il valore della proprieta arg0.
      * 
      * @param value
      *     allowed object is

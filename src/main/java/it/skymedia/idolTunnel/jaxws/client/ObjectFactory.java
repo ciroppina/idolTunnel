@@ -1,6 +1,8 @@
 
 package it.skymedia.idolTunnel.jaxws.client;
 
+import java.util.HashMap;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -24,6 +26,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _AutnResponseAsListResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "autnResponseAsListResponse");
     private final static QName _GetSpellCheckFields_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckFields");
     private final static QName _Getstatus_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatus");
     private final static QName _GetstatusResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getstatusResponse");
@@ -34,16 +37,17 @@ public class ObjectFactory {
     private final static QName _Grl_QNAME = new QName("http://idolTunnel.skymedia.it/", "grl");
     private final static QName _GetlicenseinfoResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfoResponse");
     private final static QName _GrlResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "grlResponse");
+    private final static QName _AutnResponseAsString_QNAME = new QName("http://idolTunnel.skymedia.it/", "autnResponseAsString");
     private final static QName _GetQueryHitsMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsMap");
+    private final static QName _AutnResponseAsList_QNAME = new QName("http://idolTunnel.skymedia.it/", "autnResponseAsList");
     private final static QName _GetQueryHitsNoDocumentMap_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsNoDocumentMap");
     private final static QName _GetQueryHitsNoDocumentMapResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryHitsNoDocumentMapResponse");
     private final static QName _Getversion_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversion");
     private final static QName _GetQueryResponseResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getQueryResponseResponse");
-    private final static QName _AciRequestResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequestResponse");
     private final static QName _GetversionResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getversionResponse");
     private final static QName _Getlicenseinfo_QNAME = new QName("http://idolTunnel.skymedia.it/", "getlicenseinfo");
-    private final static QName _AciRequest_QNAME = new QName("http://idolTunnel.skymedia.it/", "aciRequest");
     private final static QName _GetSpellCheckFieldsResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "getSpellCheckFieldsResponse");
+    private final static QName _AutnResponseAsStringResponse_QNAME = new QName("http://idolTunnel.skymedia.it/", "autnResponseAsStringResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: it.skymedia.idolTunnel.jaxws.client
@@ -64,8 +68,8 @@ public class ObjectFactory {
      * Create an instance of {@link Hit.DreFields }
      * 
      */
-    public Hit.DreFields createHitDreFields() {
-        return new Hit.DreFields();
+    public HashMap<String, String> createHitDreFields() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -80,24 +84,40 @@ public class ObjectFactory {
      * Create an instance of {@link GetHitIndexedContent.Arg0 }
      * 
      */
-    public GetHitIndexedContent.Arg0 createGetHitIndexedContentArg0() {
-        return new GetHitIndexedContent.Arg0();
+    public HashMap<String, String> createGetHitIndexedContentArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
-     * Create an instance of {@link AciRequest }
+     * Create an instance of {@link AutnResponseAsString }
      * 
      */
-    public AciRequest createAciRequest() {
-        return new AciRequest();
+    public AutnResponseAsString createAutnResponseAsString() {
+        return new AutnResponseAsString();
     }
 
     /**
-     * Create an instance of {@link AciRequest.Arg0 }
+     * Create an instance of {@link AutnResponseAsString.Arg0 }
      * 
      */
-    public AciRequest.Arg0 createAciRequestArg0() {
-        return new AciRequest.Arg0();
+    public HashMap<String, String> createAutnResponseAsStringArg0() {
+        return new HashMap<String, String>();
+    }
+
+    /**
+     * Create an instance of {@link AutnResponseAsList }
+     * 
+     */
+    public AutnResponseAsList createAutnResponseAsList() {
+        return new AutnResponseAsList();
+    }
+
+    /**
+     * Create an instance of {@link AutnResponseAsList.Arg0 }
+     * 
+     */
+    public HashMap<String, String> createAutnResponseAsListArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -133,14 +153,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AciRequestResponse }
-     * 
-     */
-    public AciRequestResponse createAciRequestResponse() {
-        return new AciRequestResponse();
-    }
-
-    /**
      * Create an instance of {@link GetversionResponse }
      * 
      */
@@ -162,6 +174,14 @@ public class ObjectFactory {
      */
     public GetSpellCheckFieldsResponse createGetSpellCheckFieldsResponse() {
         return new GetSpellCheckFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AutnResponseAsStringResponse }
+     * 
+     */
+    public AutnResponseAsStringResponse createAutnResponseAsStringResponse() {
+        return new AutnResponseAsStringResponse();
     }
 
     /**
@@ -213,6 +233,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AutnResponseAsListResponse }
+     * 
+     */
+    public AutnResponseAsListResponse createAutnResponseAsListResponse() {
+        return new AutnResponseAsListResponse();
+    }
+
+    /**
      * Create an instance of {@link GetSpellCheckFields }
      * 
      */
@@ -245,27 +273,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Hit.DreFields.Entry }
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutnResponseAsListResponse }{@code >}}
      * 
      */
-    public Hit.DreFields.Entry createHitDreFieldsEntry() {
-        return new Hit.DreFields.Entry();
-    }
-
-    /**
-     * Create an instance of {@link GetHitIndexedContent.Arg0 .Entry }
-     * 
-     */
-    public GetHitIndexedContent.Arg0 .Entry createGetHitIndexedContentArg0Entry() {
-        return new GetHitIndexedContent.Arg0 .Entry();
-    }
-
-    /**
-     * Create an instance of {@link AciRequest.Arg0 .Entry }
-     * 
-     */
-    public AciRequest.Arg0 .Entry createAciRequestArg0Entry() {
-        return new AciRequest.Arg0 .Entry();
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "autnResponseAsListResponse")
+    public JAXBElement<AutnResponseAsListResponse> createAutnResponseAsListResponse(AutnResponseAsListResponse value) {
+        return new JAXBElement<AutnResponseAsListResponse>(_AutnResponseAsListResponse_QNAME, AutnResponseAsListResponse.class, null, value);
     }
 
     /**
@@ -359,12 +372,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutnResponseAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "autnResponseAsString")
+    public JAXBElement<AutnResponseAsString> createAutnResponseAsString(AutnResponseAsString value) {
+        return new JAXBElement<AutnResponseAsString>(_AutnResponseAsString_QNAME, AutnResponseAsString.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetQueryHitsMap }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getQueryHitsMap")
     public JAXBElement<GetQueryHitsMap> createGetQueryHitsMap(GetQueryHitsMap value) {
         return new JAXBElement<GetQueryHitsMap>(_GetQueryHitsMap_QNAME, GetQueryHitsMap.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutnResponseAsList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "autnResponseAsList")
+    public JAXBElement<AutnResponseAsList> createAutnResponseAsList(AutnResponseAsList value) {
+        return new JAXBElement<AutnResponseAsList>(_AutnResponseAsList_QNAME, AutnResponseAsList.class, null, value);
     }
 
     /**
@@ -404,15 +435,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequestResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequestResponse")
-    public JAXBElement<AciRequestResponse> createAciRequestResponse(AciRequestResponse value) {
-        return new JAXBElement<AciRequestResponse>(_AciRequestResponse_QNAME, AciRequestResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetversionResponse }{@code >}}
      * 
      */
@@ -431,21 +453,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AciRequest }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "aciRequest")
-    public JAXBElement<AciRequest> createAciRequest(AciRequest value) {
-        return new JAXBElement<AciRequest>(_AciRequest_QNAME, AciRequest.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetSpellCheckFieldsResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "getSpellCheckFieldsResponse")
     public JAXBElement<GetSpellCheckFieldsResponse> createGetSpellCheckFieldsResponse(GetSpellCheckFieldsResponse value) {
         return new JAXBElement<GetSpellCheckFieldsResponse>(_GetSpellCheckFieldsResponse_QNAME, GetSpellCheckFieldsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutnResponseAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://idolTunnel.skymedia.it/", name = "autnResponseAsStringResponse")
+    public JAXBElement<AutnResponseAsStringResponse> createAutnResponseAsStringResponse(AutnResponseAsStringResponse value) {
+        return new JAXBElement<AutnResponseAsStringResponse>(_AutnResponseAsStringResponse_QNAME, AutnResponseAsStringResponse.class, null, value);
     }
 
 }
