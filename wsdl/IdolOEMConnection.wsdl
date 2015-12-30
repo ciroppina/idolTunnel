@@ -2,9 +2,13 @@
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://idolTunnel.skymedia.it/" elementFormDefault="unqualified" targetNamespace="http://idolTunnel.skymedia.it/" version="1.0">
 
-  <xs:element name="aciRequest" type="tns:aciRequest"></xs:element>
+  <xs:element name="autnResponseAsList" type="tns:autnResponseAsList"></xs:element>
 
-  <xs:element name="aciRequestResponse" type="tns:aciRequestResponse"></xs:element>
+  <xs:element name="autnResponseAsListResponse" type="tns:autnResponseAsListResponse"></xs:element>
+
+  <xs:element name="autnResponseAsString" type="tns:autnResponseAsString"></xs:element>
+
+  <xs:element name="autnResponseAsStringResponse" type="tns:autnResponseAsStringResponse"></xs:element>
 
   <xs:element name="getHitIndexedContent" type="tns:getHitIndexedContent"></xs:element>
 
@@ -41,32 +45,6 @@
   <xs:element name="grl" type="tns:grl"></xs:element>
 
   <xs:element name="grlResponse" type="tns:grlResponse"></xs:element>
-
-  <xs:complexType name="aciRequest">
-    <xs:sequence>
-      <xs:element name="arg0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
-                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="aciRequestResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
-    </xs:sequence>
-  </xs:complexType>
 
   <xs:complexType name="grl">
     <xs:sequence>
@@ -117,6 +95,32 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="autnResponseAsString">
+    <xs:sequence>
+      <xs:element name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autnResponseAsStringResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getstatus">
     <xs:sequence></xs:sequence>
   </xs:complexType>
@@ -151,6 +155,9 @@
 
   <xs:complexType name="hit">
     <xs:sequence>
+      <xs:element minOccurs="0" name="DREDATE" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="DREDBNAME" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="DREREFERENCE" type="xs:string"></xs:element>
       <xs:element name="dreFields">
         <xs:complexType>
           <xs:sequence>
@@ -165,6 +172,16 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element minOccurs="0" name="INDEXEDCONTENT" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="PAGECOUNT" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="SECTION" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_CLASSE" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_CLASSEID" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_DATA_NOTIFICA" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_FASCICOLO" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_FASE" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="TIAP_RG" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="UUID" type="xs:string"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -204,8 +221,38 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="autnResponseAsList">
+    <xs:sequence>
+      <xs:element name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="autnResponseAsListResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hit"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="autnResponseAsListResponse">
+    <wsdl:part element="tns:autnResponseAsListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getSpellCheckFields">
     <wsdl:part element="tns:getSpellCheckFields" name="parameters">
     </wsdl:part>
@@ -246,8 +293,16 @@
     <wsdl:part element="tns:grlResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="autnResponseAsString">
+    <wsdl:part element="tns:autnResponseAsString" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getQueryHitsMap">
     <wsdl:part element="tns:getQueryHitsMap" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="autnResponseAsList">
+    <wsdl:part element="tns:autnResponseAsList" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getQueryHitsNoDocumentMapResponse">
@@ -266,16 +321,8 @@
     <wsdl:part element="tns:getversion" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="aciRequestResponse">
-    <wsdl:part element="tns:aciRequestResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getlicenseinfo">
     <wsdl:part element="tns:getlicenseinfo" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="aciRequest">
-    <wsdl:part element="tns:aciRequest" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getversionResponse">
@@ -286,13 +333,11 @@
     <wsdl:part element="tns:getSpellCheckFieldsResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="autnResponseAsStringResponse">
+    <wsdl:part element="tns:autnResponseAsStringResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="IdolOEMConnection">
-    <wsdl:operation name="aciRequest">
-      <wsdl:input message="tns:aciRequest" name="aciRequest">
-    </wsdl:input>
-      <wsdl:output message="tns:aciRequestResponse" name="aciRequestResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="grl">
       <wsdl:input message="tns:grl" name="grl">
     </wsdl:input>
@@ -309,6 +354,12 @@
       <wsdl:input message="tns:getQueryResponse" name="getQueryResponse">
     </wsdl:input>
       <wsdl:output message="tns:getQueryResponseResponse" name="getQueryResponseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autnResponseAsString">
+      <wsdl:input message="tns:autnResponseAsString" name="autnResponseAsString">
+    </wsdl:input>
+      <wsdl:output message="tns:autnResponseAsStringResponse" name="autnResponseAsStringResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getstatus">
@@ -347,18 +398,15 @@
       <wsdl:output message="tns:getQueryHitsMapResponse" name="getQueryHitsMapResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="autnResponseAsList">
+      <wsdl:input message="tns:autnResponseAsList" name="autnResponseAsList">
+    </wsdl:input>
+      <wsdl:output message="tns:autnResponseAsListResponse" name="autnResponseAsListResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="IdolOEMConnectionSoapBinding" type="tns:IdolOEMConnection">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
-    <wsdl:operation name="aciRequest">
-      <soap:operation soapAction="" style="document"></soap:operation>
-      <wsdl:input name="aciRequest">
-        <soap:body use="literal"></soap:body>
-      </wsdl:input>
-      <wsdl:output name="aciRequestResponse">
-        <soap:body use="literal"></soap:body>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="grl">
       <soap:operation soapAction="" style="document"></soap:operation>
       <wsdl:input name="grl">
@@ -374,6 +422,15 @@
         <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="getHitIndexedContentResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autnResponseAsString">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="autnResponseAsString">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="autnResponseAsStringResponse">
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
@@ -437,6 +494,15 @@
         <soap:body use="literal"></soap:body>
       </wsdl:input>
       <wsdl:output name="getQueryHitsMapResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autnResponseAsList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="autnResponseAsList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="autnResponseAsListResponse">
         <soap:body use="literal"></soap:body>
       </wsdl:output>
     </wsdl:operation>
