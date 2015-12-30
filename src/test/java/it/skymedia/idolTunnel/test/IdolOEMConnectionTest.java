@@ -48,11 +48,11 @@ public class IdolOEMConnectionTest {
 		
 		String expected = "{\"$\":\"SUCCESS\"}";
 		
-		String autnresponse = ic.aciRequest(pList, "json");
+		String autnresponse = ic.autnResponseAsString(pList, "json");
 		assertTrue("should be in Json!", 
 				   autnresponse.contains(expected));
 		
-		autnresponse = ic.aciRequest(pList, "xml");
+		autnresponse = ic.autnResponseAsString(pList, "xml");
 		assertFalse("should not be in Json, but in XML!", 
 			        autnresponse.contains(expected));
 		//fail("Not yet implemented");
@@ -72,7 +72,7 @@ public class IdolOEMConnectionTest {
 		pList.put("totalResults", "true");
 		
 		String expected = "SUCCESS";
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		//Document documentResult = ic.responseToXMLDocument(autnresponse);
 		String result = ic.getQueryResponse(autnresponse);
 		
@@ -93,7 +93,7 @@ public class IdolOEMConnectionTest {
 		pList.put("totalResults", "true");
 		
 		int size = 25;
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		//Document documentResult = ic.responseToXMLDocument(autnresponse);
 		ArrayList<Hit> listHits = ic.getQueryHitsMap(autnresponse);
 		
@@ -113,7 +113,7 @@ public class IdolOEMConnectionTest {
 		pList.put("SpellCheckAlphaNumeric", "false");
 		pList.put("outputencoding", "utf8");
 		
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		//Document documentResult = ic.responseToXMLDocument(autnresponse);
 		String[] spellCheckFields = ic.getSpellCheckFields(autnresponse);
 		
@@ -141,7 +141,7 @@ public class IdolOEMConnectionTest {
 		pList.put("SpellCheckAlphaNumeric", "false");
 		pList.put("outputencoding", "utf8");
 		
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		//Document documentResult = ic.responseToXMLDocument(autnresponse);
 		String[] spellCheckFields = ic.getSpellCheckFields(autnresponse);
 		
@@ -168,7 +168,7 @@ public class IdolOEMConnectionTest {
 		pList.put("print", "indexText");
 		pList.put("outputencoding", "utf8");
 		
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		ArrayList<Hit> hits = ic.getQueryHitsNoDocumentMap(autnresponse);
 		
 		assertTrue("Result should contains the autn:content not-empty field", 

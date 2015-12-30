@@ -76,7 +76,7 @@ public class ClientSample {
 		pList.put("maxresults", "10");
 		pList.put("outputencoding", "utf8");
 		
-		autnresponse = ic.aciRequest(pList, "xml");
+		autnresponse = ic.autnResponseAsString(pList, "xml");
 		List<Hit> listOfHits = ic.getQueryHitsNoDocumentMap(autnresponse);
 		String indexedContent = ic.getHitIndexedContent(listOfHits.get(0).getDreFields());
 		System.out.println("Server said: Indexed Content: \n" + indexedContent );
@@ -105,7 +105,7 @@ public class ClientSample {
 		pList.put("print", "noresults");
 		pList.put("outputencoding", "utf8");
 		
-		autnresponse = ic.aciRequest(pList, "xml");
+		autnresponse = ic.autnResponseAsString(pList, "xml");
 		List<String> list = ic.getSpellCheckFields(autnresponse);
 		System.out.println("Server said: spellCheck fields: \n" 
 			+ list.get(0)+"\n"
@@ -138,7 +138,7 @@ public class ClientSample {
 		pList.put("outputencoding", "utf8");
 		pList.put("totalResults", "true");
 		
-		autnresponse = ic.aciRequest(pList, "xml");
+		autnresponse = ic.autnResponseAsString(pList, "xml");
 		List<Hit> listHits = ic.getQueryHitsMap(autnresponse);
 		System.out.println("Server said: size should be 25: " + listHits.size() );
 	}
@@ -172,7 +172,7 @@ public class ClientSample {
 		IdolOEMConnection ic = service1.getIdolOEMConnectionPort();
 		/**
 		 */
-		String autnresponse = ic.aciRequest(pList, "xml");
+		String autnresponse = ic.autnResponseAsString(pList, "xml");
 		System.out.println("Server said: " + ic.getQueryResponse(autnresponse) );
 		return ic;
 	}
@@ -196,7 +196,7 @@ public class ClientSample {
         IdolOEMConnection port2 = service1.getIdolOEMConnectionPort();
         System.out.println("Call Web Service Operation...");
 
-        System.out.println("Server said: " + port2.aciRequest(pList, "xml"));
+        System.out.println("Server said: " + port2.autnResponseAsString(pList, "xml"));
 
         System.out.println("Server said: " + port2.getstatus());
         System.out.println("Server said: " + port2.grl(50L));
@@ -239,7 +239,7 @@ public class ClientSample {
         IdolOEMConnection port1 = service1.getIdolOEMConnectionPort();
         System.out.println("Call Web Service Operation...");
        
-        System.out.println("Server said: " + port1.aciRequest(pList, "json"));
+        System.out.println("Server said: " + port1.autnResponseAsString(pList, "json"));
 
         System.out.println("Server said: " + port1.getstatus());
         System.out.println("Server said: " + port1.grl(10L));
