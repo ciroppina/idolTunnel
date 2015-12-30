@@ -271,10 +271,22 @@ public class IdolOEMConnection {
 	/**
 	 * accepts every ACI action and the return format: XML or Json
 	 * 
+	 * @return a List<Hit> containing one or more Hit objects (autn:hit)
+	 */
+	@WebMethod(operationName="autnResponseAsList")
+	public ArrayList<Hit> autnResponseAsList(Map<String, String> pList, String format) {
+		String autnresposne = autnResponseAsString(pList, format);
+		ArrayList<Hit> result = getQueryHitsMap(autnresposne);
+		return result;
+	}
+	
+	/**
+	 * accepts every ACI action and the return format: XML or Json
+	 * 
 	 * @return a String containing the XML/Json compact response
 	 */
-	@WebMethod(operationName="aciRequest")
-	public String aciRequest(Map<String, String> pList, String format) {
+	@WebMethod(operationName="autnResponseAsString")
+	public String autnResponseAsString(Map<String, String> pList, String format) {
 		if (! isActionGood(pList)) return "Badly Formatted Request";
 		
 		AciParameters parms = new AciParameters();
@@ -284,6 +296,7 @@ public class IdolOEMConnection {
 		parms.add(new AciParameter(AciConstants.PARAM_RESPONSE_FORMAT, format) );
 
 		try {
+			if (format == null || format.length() < 3) format = "xml";
 			// executing action...
 			String autnResponse = format.toLowerCase().equals("xml") ? 
 				xmlResponse(this.aciService.executeAction(parms, new DocumentProcessor()) ): // XML
