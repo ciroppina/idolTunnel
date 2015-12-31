@@ -74,6 +74,7 @@ public class ClientSample {
 		pList.put("action", "query");
 		pList.put("text", "imputato indagato latitante");
 		pList.put("anylanguage", "true");
+		pList.put("totalResults", "true");
 		pList.put("maxresults", "25");
 		pList.put("outputencoding", "utf8");
 		

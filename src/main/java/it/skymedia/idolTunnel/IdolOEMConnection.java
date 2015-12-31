@@ -388,8 +388,16 @@ public class IdolOEMConnection {
 	@WebMethod(operationName="getQueryHitsNoDocumentMap")
 	public ArrayList<Hit> getQueryHitsNoDocumentMap(String xml){
 		ArrayList<Hit> result = new ArrayList<Hit>();
-		
 		Document document = getDocumentFrom(xml);
+
+		NodeList temp = null;
+		temp = document.getElementsByTagName("response");
+		String response = (temp.getLength() > 0) ? document.getElementsByTagName("response").item(0).getTextContent() : "FAILURE";
+		temp = document.getElementsByTagName("autn:numhits");
+		String numHits = (temp.getLength() > 0) ? document.getElementsByTagName("autn:numhits").item(0).getTextContent() : "0";
+		temp = document.getElementsByTagName("autn:totalhits");
+		String totalHits = (temp.getLength() > 0) ? document.getElementsByTagName("autn:totalhits").item(0).getTextContent() : "0";
+
 		NodeList hits = document.getElementsByTagName("autn:hit");
 
 		for(int i=0; i<hits.getLength(); i++) {
@@ -427,7 +435,12 @@ public class IdolOEMConnection {
 					}
 				}
 			}
-			result.add(new Hit(map));
+			Hit hit=new Hit(map);
+			hit.getDreFields().put("response", response);
+			hit.getDreFields().put("numhits", numHits);
+			hit.getDreFields().put("totalhits", totalHits);
+			
+			result.add(hit);
 		}
 		return result;
 	}
@@ -441,8 +454,16 @@ public class IdolOEMConnection {
 	@WebMethod(operationName="getQueryHitsMap")
 	public ArrayList<Hit> getQueryHitsMap(String xml){
 		ArrayList<Hit> result = new ArrayList<Hit>();
-
 		Document document = getDocumentFrom(xml);
+
+		NodeList temp = null;
+		temp = document.getElementsByTagName("response");
+		String response = (temp.getLength() > 0) ? document.getElementsByTagName("response").item(0).getTextContent() : "FAILURE";
+		temp = document.getElementsByTagName("autn:numhits");
+		String numHits = (temp.getLength() > 0) ? document.getElementsByTagName("autn:numhits").item(0).getTextContent() : "0";
+		temp = document.getElementsByTagName("autn:totalhits");
+		String totalHits = (temp.getLength() > 0) ? document.getElementsByTagName("autn:totalhits").item(0).getTextContent() : "0";
+
 		NodeList hits = document.getElementsByTagName("autn:hit");
 
 		for(int i=0; i<hits.getLength(); i++) {
@@ -484,7 +505,12 @@ public class IdolOEMConnection {
 					}
 				}
 			}
-			result.add(new Hit(map));
+			Hit hit=new Hit(map);
+			hit.getDreFields().put("response", response);
+			hit.getDreFields().put("numhits", numHits);
+			hit.getDreFields().put("totalhits", totalHits);
+			
+			result.add(hit);
 		}
 		return result;
 	}
