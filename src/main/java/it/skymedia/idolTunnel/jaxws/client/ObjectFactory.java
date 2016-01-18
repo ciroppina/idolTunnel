@@ -70,8 +70,8 @@ public class ObjectFactory {
      * Create an instance of {@link Hit.DreFields }
      * 
      */
-    public HashMap<String, String > createHitDreFields() {
-        return new HashMap<String, String >();
+    public HashMap<String, String> createHitDreFields() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -86,8 +86,8 @@ public class ObjectFactory {
      * Create an instance of {@link GetSpellCheck.Arg0 }
      * 
      */
-    public HashMap<String, String > createGetSpellCheckArg0() {
-        return new HashMap<String, String >();
+    public HashMap<String, String> createGetSpellCheckArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -102,8 +102,8 @@ public class ObjectFactory {
      * Create an instance of {@link GetHitIndexedContent.Arg0 }
      * 
      */
-    public HashMap<String, String > createGetHitIndexedContentArg0() {
-        return new HashMap<String, String >();
+    public HashMap<String, String> createGetHitIndexedContentArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -118,8 +118,8 @@ public class ObjectFactory {
      * Create an instance of {@link AutnResponseAsString.Arg0 }
      * 
      */
-    public HashMap<String, String > createAutnResponseAsStringArg0() {
-        return new HashMap<String, String >();
+    public HashMap<String, String> createAutnResponseAsStringArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -134,8 +134,8 @@ public class ObjectFactory {
      * Create an instance of {@link AutnResponseAsList.Arg0 }
      * 
      */
-    public HashMap<String, String > createAutnResponseAsListArg0() {
-        return new HashMap<String, String >();
+    public HashMap<String, String> createAutnResponseAsListArg0() {
+        return new HashMap<String, String>();
     }
 
     /**
@@ -297,6 +297,14 @@ public class ObjectFactory {
     public GetQueryHitsMapResponse createGetQueryHitsMapResponse() {
         return new GetQueryHitsMapResponse();
     }
+
+//    /**
+//     * Create an instance of {@link Hit.DreFields.Entry }
+//     * 
+//     */
+//    public Hit.DreFields.Entry createHitDreFieldsEntry() {
+//        return new Hit.DreFields.Entry();
+//    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AutnResponseAsListResponse }{@code >}}

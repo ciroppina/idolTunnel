@@ -32,12 +32,12 @@ public class Hit implements Serializable {
 	private String DREDATE = "";
 	private String TIAP_CLASSEID = "";
 	private String TIAP_CLASSE = "";
-	private String TIAP_FASCICOLO = "";
+	private String TIAP_FASCICOLOID = "";
+	private String TIAP_DOCUMENTOID = "";
 	private String PAGECOUNT = "";
 	private String DREDBNAME = "";
 	private String TIAP_FASE = "";
 	private String TIAP_DATA_NOTIFICA = "";
-	private String TIAP_RG = "";
 	private String INDEXEDCONTENT;
 	private String SECTION;
 	
@@ -69,8 +69,8 @@ public class Hit implements Serializable {
 		TIAP_CLASSE = tIAP_CLASSE;
 	}
 
-	public void setTIAP_FASCICOLO(String tIAP_FASCICOLO) {
-		TIAP_FASCICOLO = tIAP_FASCICOLO;
+	public void setTIAP_FASCICOLOID(String tIAP_FASCICOLO) {
+		TIAP_FASCICOLOID = tIAP_FASCICOLO;
 	}
 
 	public void setPAGECOUNT(String pAGECOUNT) {
@@ -87,10 +87,6 @@ public class Hit implements Serializable {
 
 	public void setTIAP_DATA_NOTIFICA(String tIAP_DATA_NOTIFICA) {
 		TIAP_DATA_NOTIFICA = tIAP_DATA_NOTIFICA;
-	}
-
-	public void setTIAP_RG(String tIAP_RG) {
-		TIAP_RG = tIAP_RG;
 	}
 
 	public void setINDEXEDCONTENT(String iNDEXEDCONTENT) {
@@ -121,8 +117,8 @@ public class Hit implements Serializable {
 		return TIAP_CLASSE;
 	}
 
-	public String getTIAP_FASCICOLO() {
-		return TIAP_FASCICOLO;
+	public String getTIAP_FASCICOLOID() {
+		return TIAP_FASCICOLOID;
 	}
 
 	public String getPAGECOUNT() {
@@ -141,8 +137,12 @@ public class Hit implements Serializable {
 		return TIAP_DATA_NOTIFICA;
 	}
 
-	public String getTIAP_RG() {
-		return TIAP_RG;
+	public String getTIAP_DOCUMENTOID() {
+		return TIAP_DOCUMENTOID;
+	}
+
+	public void setTIAP_DOCUMENTOID(String tIAP_DOCUMENTOID) {
+		TIAP_DOCUMENTOID = tIAP_DOCUMENTOID;
 	}
 
 	/**
@@ -159,10 +159,10 @@ public class Hit implements Serializable {
 		this.TIAP_CLASSEID = map.get("TIAP_CLASSEID") == null ? "" : map.get("TIAP_CLASSEID");
 		this.TIAP_CLASSE = map.get("TIAP_CLASSE") == null ? "" : map.get("TIAP_CLASSE");
 		this.DREDBNAME = map.get("DREDBNAME") == null ? "" : map.get("DREDBNAME");
-		this.TIAP_FASCICOLO = map.get("TIAP_FASCICOLO") == null ? "" : map.get("TIAP_FASCICOLO");
+		this.TIAP_FASCICOLOID = map.get("TIAP_FASCICOLOID") == null ? "" : map.get("TIAP_FASCICOLOID");
 		this.PAGECOUNT = map.get("PAGECOUNT") == null ? "" : map.get("PAGECOUNT");
 		this.TIAP_FASE = map.get("TIAP_FASE") == null ? "" : map.get("TIAP_FASE");
-		this.TIAP_RG = map.get("TIAP_RG") == null ? "" : map.get("TIAP_RG");
+		this.TIAP_DOCUMENTOID = map.get("TIAP_DOCUMENTOID") == null ? "" : map.get("TIAP_DOCUMENTOID");
 		this.TIAP_DATA_NOTIFICA = map.get("TIAP_DATA_NOTIFICA") == null ? "" : map.get("TIAP_DATA_NOTIFICA");
 		this.SECTION = map.get("autn:section") == null ? "" : map.get("autn:section");
 	}

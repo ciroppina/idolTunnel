@@ -56,17 +56,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetHitIndexedContent {
 
     @XmlElement(required = true)
-    protected HashMap<String, String > arg0;
+    protected HashMap<String, String> arg0;
 
     /**
      * Recupera il valore della proprieta arg0.
      * 
      * @return
      *     possible object is
-     *     {@link HashMap<String, String > }
+     *     {@link GetHitIndexedContent.Arg0 }
      *     
      */
-    public HashMap<String, String > getArg0() {
+    public HashMap<String, String> getArg0() {
         return arg0;
     }
 
@@ -75,10 +75,10 @@ public class GetHitIndexedContent {
      * 
      * @param value
      *     allowed object is
-     *     {@link HashMap<String, String > }
+     *     {@link GetHitIndexedContent.Arg0 }
      *     
      */
-    public void setArg0(HashMap<String, String > value) {
+    public void setArg0(HashMap<String, String> value) {
         this.arg0 = value;
     }
 

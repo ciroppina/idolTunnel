@@ -50,9 +50,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="TIAP_CLASSE" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TIAP_CLASSEID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TIAP_DATA_NOTIFICA" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="TIAP_FASCICOLO" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TIAP_DOCUMENTOID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TIAP_FASCICOLOID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="TIAP_FASE" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="TIAP_RG" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -74,9 +74,9 @@ import javax.xml.bind.annotation.XmlType;
     "tiapclasse",
     "tiapclasseid",
     "tiapdatanotifica",
-    "tiapfascicolo",
+    "tiapdocumentoid",
+    "tiapfascicoloid",
     "tiapfase",
-    "tiaprg",
     "uuid"
 })
 public class Hit {
@@ -88,7 +88,7 @@ public class Hit {
     @XmlElement(name = "DREREFERENCE")
     protected String drereference;
     @XmlElement(required = true)
-    protected HashMap<String, String > dreFields;
+    protected HashMap<String, String> dreFields;
     @XmlElement(name = "INDEXEDCONTENT")
     protected String indexedcontent;
     @XmlElement(name = "PAGECOUNT")
@@ -101,12 +101,12 @@ public class Hit {
     protected String tiapclasseid;
     @XmlElement(name = "TIAP_DATA_NOTIFICA")
     protected String tiapdatanotifica;
-    @XmlElement(name = "TIAP_FASCICOLO")
-    protected String tiapfascicolo;
+    @XmlElement(name = "TIAP_DOCUMENTOID")
+    protected String tiapdocumentoid;
+    @XmlElement(name = "TIAP_FASCICOLOID")
+    protected String tiapfascicoloid;
     @XmlElement(name = "TIAP_FASE")
     protected String tiapfase;
-    @XmlElement(name = "TIAP_RG")
-    protected String tiaprg;
     @XmlElement(name = "UUID")
     protected String uuid;
 
@@ -187,10 +187,10 @@ public class Hit {
      * 
      * @return
      *     possible object is
-     *     {@link HashMap<String, String > }
+     *     {@link Hit.DreFields }
      *     
      */
-    public HashMap<String, String > getDreFields() {
+    public HashMap<String, String> getDreFields() {
         return dreFields;
     }
 
@@ -199,10 +199,10 @@ public class Hit {
      * 
      * @param value
      *     allowed object is
-     *     {@link HashMap<String, String > }
+     *     {@link Hit.DreFields }
      *     
      */
-    public void setDreFields(HashMap<String, String > value) {
+    public void setDreFields(HashMap<String, String> value) {
         this.dreFields = value;
     }
 
@@ -351,27 +351,51 @@ public class Hit {
     }
 
     /**
-     * Recupera il valore della proprieta tiapfascicolo.
+     * Recupera il valore della proprieta tiapdocumentoid.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTIAPFASCICOLO() {
-        return tiapfascicolo;
+    public String getTIAPDOCUMENTOID() {
+        return tiapdocumentoid;
     }
 
     /**
-     * Imposta il valore della proprieta tiapfascicolo.
+     * Imposta il valore della proprieta tiapdocumentoid.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTIAPFASCICOLO(String value) {
-        this.tiapfascicolo = value;
+    public void setTIAPDOCUMENTOID(String value) {
+        this.tiapdocumentoid = value;
+    }
+
+    /**
+     * Recupera il valore della proprieta tiapfascicoloid.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTIAPFASCICOLOID() {
+        return tiapfascicoloid;
+    }
+
+    /**
+     * Imposta il valore della proprieta tiapfascicoloid.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTIAPFASCICOLOID(String value) {
+        this.tiapfascicoloid = value;
     }
 
     /**
@@ -399,30 +423,6 @@ public class Hit {
     }
 
     /**
-     * Recupera il valore della proprieta tiaprg.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTIAPRG() {
-        return tiaprg;
-    }
-
-    /**
-     * Imposta il valore della proprieta tiaprg.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTIAPRG(String value) {
-        this.tiaprg = value;
-    }
-
-    /**
      * Recupera il valore della proprieta uuid.
      * 
      * @return
@@ -445,5 +445,156 @@ public class Hit {
     public void setUUID(String value) {
         this.uuid = value;
     }
+
+
+    /**
+     * <p>Classe Java per anonymous complex type.
+     * 
+     * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="entry" maxOccurs="unbounded" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                   &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+//    @XmlAccessorType(XmlAccessType.FIELD)
+//    @XmlType(name = "", propOrder = {
+//        "entry"
+//    })
+//    public static class DreFields {
+//
+//        protected List<Hit.DreFields.Entry> entry;
+//
+//        /**
+//         * Gets the value of the entry property.
+//         * 
+//         * <p>
+//         * This accessor method returns a reference to the live list,
+//         * not a snapshot. Therefore any modification you make to the
+//         * returned list will be present inside the JAXB object.
+//         * This is why there is not a <CODE>set</CODE> method for the entry property.
+//         * 
+//         * <p>
+//         * For example, to add a new item, do as follows:
+//         * <pre>
+//         *    getEntry().add(newItem);
+//         * </pre>
+//         * 
+//         * 
+//         * <p>
+//         * Objects of the following type(s) are allowed in the list
+//         * {@link Hit.DreFields.Entry }
+//         * 
+//         * 
+//         */
+//        public List<Hit.DreFields.Entry> getEntry() {
+//            if (entry == null) {
+//                entry = new ArrayList<Hit.DreFields.Entry>();
+//            }
+//            return this.entry;
+//        }
+//
+//
+//        /**
+//         * <p>Classe Java per anonymous complex type.
+//         * 
+//         * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+//         * 
+//         * <pre>
+//         * &lt;complexType>
+//         *   &lt;complexContent>
+//         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+//         *       &lt;sequence>
+//         *         &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+//         *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+//         *       &lt;/sequence>
+//         *     &lt;/restriction>
+//         *   &lt;/complexContent>
+//         * &lt;/complexType>
+//         * </pre>
+//         * 
+//         * 
+//         */
+//        @XmlAccessorType(XmlAccessType.FIELD)
+//        @XmlType(name = "", propOrder = {
+//            "key",
+//            "value"
+//        })
+//        public static class Entry {
+//
+//            protected String key;
+//            protected String value;
+//
+//            /**
+//             * Recupera il valore della proprieta key.
+//             * 
+//             * @return
+//             *     possible object is
+//             *     {@link String }
+//             *     
+//             */
+//            public String getKey() {
+//                return key;
+//            }
+//
+//            /**
+//             * Imposta il valore della proprieta key.
+//             * 
+//             * @param value
+//             *     allowed object is
+//             *     {@link String }
+//             *     
+//             */
+//            public void setKey(String value) {
+//                this.key = value;
+//            }
+//
+//            /**
+//             * Recupera il valore della proprieta value.
+//             * 
+//             * @return
+//             *     possible object is
+//             *     {@link String }
+//             *     
+//             */
+//            public String getValue() {
+//                return value;
+//            }
+//
+//            /**
+//             * Imposta il valore della proprieta value.
+//             * 
+//             * @param value
+//             *     allowed object is
+//             *     {@link String }
+//             *     
+//             */
+//            public void setValue(String value) {
+//                this.value = value;
+//            }
+//
+//        }
+//
+//    }
 
 }
