@@ -5,8 +5,10 @@ import static org.junit.Assert.assertTrue;
 import it.skymedia.idolTunnel.Hit;
 import it.skymedia.idolTunnel.IdolOEMConnection;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.junit.After;
@@ -22,10 +24,13 @@ import org.junit.Test;
  */
 public class IdolOEMConnectionTest {
 	
+	static PrintStream CONSOLE;
+	
 	static IdolOEMConnection ic; 
 	@Before
 	public void init() {
 		ic = new IdolOEMConnection();
+		CONSOLE = System.out;
 	}
 
 	@After
@@ -91,11 +96,35 @@ public class IdolOEMConnectionTest {
 		pList.put("combine", "simple");
 		pList.put("outputencoding", "utf8");
 		pList.put("totalResults", "true");
+		pList.put("print", "all");
 		
 		int size = 25;
 		ArrayList<Hit> listOfHits = ic.autnResponseAsList(pList, "xml");
-		
 		assertTrue("Result List Size should be 25!", listOfHits.size()== size);
+
+		printContentOf(listOfHits);
+	}
+	
+	@Test
+	public void testAutnResponseAsListFrom() throws Exception {
+		String databaseList = "titolario";
+		
+		Map<String, String> pList = new HashMap<String, String>();
+		pList.put("action", "query");
+		pList.put("text", "*");
+		pList.put("anylanguage", "true");
+		pList.put("maxresults", "25");
+		pList.put("databasematch", databaseList);
+		pList.put("combine", "simple");
+		pList.put("outputencoding", "utf8");
+		pList.put("totalResults", "true");
+		pList.put("print", "all");
+		
+		int size = 25;
+		ArrayList<Hit> listOfHits = ic.autnResponseAsList(pList, "xml");
+		assertTrue("Result List Size should be 25!", listOfHits.size()== size);
+
+		printContentOf(listOfHits);
 	}
 	
 	@Test
@@ -225,5 +254,45 @@ public class IdolOEMConnectionTest {
 		System.out.println("\n\tINDEXED CONTENT:\n" + 
 				ic.getHitIndexedContent(hits.get(0).getDreFields())
 		);
+	}
+	
+	/**
+	 * Utilities
+	 */
+	
+	private void console(Object o) {
+		CONSOLE.println("\t" + o.toString());
+	}
+	
+	/**
+	 * @param listOfHits
+	 */
+	public void printContentOf(ArrayList<Hit> listOfHits) {
+		console("### Contenuto dell' <autnResponse> ###");
+		for (Hit hit : listOfHits) {
+			console( "DREREFERENCE: " + hit.getDREREFERENCE() );
+			console( "DREDATE: " + hit.getDREDATE() );
+			console( "DREDBNAME: " + hit.getDREDBNAME() );
+			console( "INDEXEDCONTENT: " + hit.getINDEXEDCONTENT() );
+			console( "PAGECOUNT: " + hit.getPAGECOUNT() );
+			console( "DRESECTION: " + hit.getSECTION() );
+			console( "TIAP_CLASSE: " + hit.getTIAP_CLASSE() );
+			console( "TIAP_CLASSEID: " + hit.getTIAP_CLASSEID() );
+			console( "TIAP_DATA_NOTIFICA: " + hit.getTIAP_DATA_NOTIFICA() );
+			console( "TIAP_DOCUMENTOID: " + hit.getTIAP_DOCUMENTOID() );
+			
+			console( "TIAP_FASCICOLOID: " + hit.getTIAP_FASCICOLOID() );
+			console( "TIAP_FASE: " + hit.getTIAP_FASE() );
+			console( "UUID: " + hit.getUUID() );
+			
+			Map<String, String> fields = hit.getDreFields();
+			Iterator<String> iterator = fields.keySet().iterator();
+			while(iterator.hasNext()) {
+				String key = iterator.next();
+				console( key + ": " + fields.get(key) );
+			}
+			console( "FINE-HIT ############################################################################################\n\n\n");
+		}
+		console("### Fine Contenuto dell' <autnResponse> ###\n");
 	}
 }
