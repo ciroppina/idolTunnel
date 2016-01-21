@@ -13,6 +13,11 @@
 This is an Eclipse Maven artifacted (maven jee7) project
 useful as a tunnel to send ACI actions to HP IDOL Server
 aciport [default 9000] over the http/https protocol
+################## NOTICE THAT: ##########################
+This is not a Generic Idol Tunnel, anymore. Because it's
+specific for a specific integration: IDOL-to-TIAP (by SiLine)
+Look GitHub for a true-Generic IDOL Tunnel
+
 
 The configuration properties are contained in the:
 - idol_config/idolTunnel.properties file
@@ -46,6 +51,15 @@ operations:
 
 The main @WebMethod (SOAP Operation) has the signature:
 /**
+ * accepts every ACI action and the return format: "xml" or "json"
+ * 
+ * @return a List<Hit> containing one or more Hit objects (autn:hit)
+ */
+@WebMethod(operationName="autnResponseAsList")
+public ArrayList<Hit> autnResponseAsList(Map<String, String> pList, String format) 
+
+Another useful SOAP operation has the signature:
+/**
  * accepts every ACI action and the return format: XML or ByteArray
  * format MUST be: "xml" OR "json" (json meaning every else 
  * byte format), it means the desired response format
@@ -58,3 +72,4 @@ public String aciRequest(Map<String, String> pList, String format);
 The folder mvn-provided/* contains a couple of jars
 and their relative mvn-install Windows commands, in 
 order to install such jars in the .m2 (maven 3) repo
+You are free to change them into Linux .sh files
