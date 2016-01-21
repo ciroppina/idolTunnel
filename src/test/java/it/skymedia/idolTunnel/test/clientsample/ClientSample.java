@@ -51,7 +51,7 @@ public class ClientSample {
 		aQueryReturningListOfHits(ic);
 		
         System.out.println("***********************");
-        System.out.println("Call Over!");
+        System.out.println("Call Over on IDOL server" + "!");
         /**
          * console output ends here
          */
